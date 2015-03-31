@@ -15,7 +15,18 @@
     + logout.php
   + /hrdb : Human Resource Database
   + /boss : What boss see
+  + /template
 
 ### DB Structure
 
 + db_lab1.sql
++ user: db_lab1
++ tables:
+    + employer
+    + location
+    + occupation
+    + recruit
+    + specialty
+    + user
+    + user_specialty
+
