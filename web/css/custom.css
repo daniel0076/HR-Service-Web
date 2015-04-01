@@ -1,16 +1,21 @@
 .ui.segment {
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: auto;
+    margin-right: auto;
     top: 10%;
 }
 .ui.form {
-    margin-left: 30%;
-    margin-right: 30%;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .ui.submit.button {
-    margin-left: 43%;
-    margin-right: 30%;
+    margin-left: 43%;    
+    margin-right: auto;
 }
-#boss_img {
-    margin-left: 15%;
+.header {
+    text-align: center;
+}
+.ui.modal {
+    width: 30%;
+    left:63%;
 }

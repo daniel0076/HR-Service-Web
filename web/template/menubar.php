@@ -9,9 +9,6 @@
     <script type="text/javascript">
         $(document).ready(function(){$('.ui.dropdown').dropdown({on:'hover'})});
     </script>
-<!--    <style>
-        body{background-color:#E6E600}
-    </style>-->
 </head>
 <body>
 <div></div>
@@ -19,16 +16,16 @@
     <a class="item" href="../index.php">
         <i class="lightning icon"></i> Just Sudo It
     </a>
-    <div class="ui pointing dropdown link item">
+<!--    <div class="ui pointing dropdown link item">
         <div class="text">2015-DB</div>
         <i class="dropdown icon"></i>
         <div class="menu">
             <div class="item">Lab1</div>
         </div>
-    </div>
+    </div>-->
     <div class="right menu">
     <?php
-        if(!isset($_SESSION['employee'])&&!isset($_SESSION['employer']))
+        if(!isset($_SESSION['is_user'])&&!isset($_SESSION['is_boss']))
         {
             include 'before_login.php';
         }
@@ -41,9 +38,10 @@
         <i class="close icon"></i>
             <div class="header">Account Type</div>
         <div class="content">
-        <div class="ui medium images">
-            <a href="../admin/register_er.php"><img src="../image/boss.png" id="boss_img"></a>
- <a href="../admin/register_ee.php"><img src="../image/jobseeker.png" id="jobseeker_img"></a>
+        <div class="ui small images" align="middle">
+            <a href="../admin/reg_boss.php"><img src="../image/boss.png" id="boss_img"></a>
+            <div type="hidden"></div>
+            <a href="../admin/reg_jobseeker.php"><img src="../image/jobseeker.png" id="jobseeker_img"></a>
         </div>
     </div>
     </div>
