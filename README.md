@@ -30,3 +30,13 @@
     + user
     + user_specialty
 
+### Session Varibles
+  + is_authed
+    + True for logined
+    + False for visitors
+  + is_user : True for identity is user
+    + user_id
+    + user_name
+  + is_boss : True for identity is admin
+    + boss_id
+    + boss_name
