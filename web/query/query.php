@@ -1,10 +1,10 @@
 <?php
-    class boss
+    class Boss
     {
-
         private static $myPDO=null;
         public function __construct()
         {
+            echo '!';
             if(isset($GLOBALS['db']))
             {
                 self::$myPDO = $GLOBALS['db'];
@@ -39,27 +39,28 @@
                 echo 'Register failed!' . $e->getMessage();
                 return False;
             }
+            return True;
 
         }
-        public function PostJob($employer,$occupation,$location,$working_time,$experience,$salary)
-        {
-        }
-
-        public function UpdateJob($occupation,$location,$working_time,$experience,$salary)
-        {
-        }
-
-        public function RemoveJob()
-        {
-        }
-
-
-    }
+#        public function PostJob($employer,$occupation,$location,$working_time,$experience,$salary)
+#        {
+#        }
+#
+#        public function UpdateJob($occupation,$location,$working_time,$experience,$salary)
+#        {
+#        }
+#
+#        public function RemoveJob()
+#        {
+#        }
+#
+#
+#    }
 #    class jobseeker
 #    {
 #
 #        public function JobSeekerRegister($account,$password,$education,$expected_salary,$phone,$gender,$age,$email)
 #        {
 #        }
-#    }
+    }
 ?>

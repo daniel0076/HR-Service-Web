@@ -12,6 +12,7 @@ session_start();
     <script src="js/custom.js"></script>
   </head>
   <body>
+<?php include 'template/register_modal.php';?>
     <div></div>
     <div class="ui green inverted menu">
       <a class="item" href="index.php">
@@ -46,19 +47,8 @@ session_start();
             ';
              }?>
         </div>
-        <div class="ui modal">
-          <i class="close icon"></i>
-          <div class="header">Account Type</div>
-          <div class="content">
-            <div class="ui small images" align="middle">
-              <a href="admin/reg_boss.php"><img src="image/boss.png" id="boss_img"></a>
-              <div type="hidden"></div>
-              <a href="admin/reg_jobseeker.php"><img src="image/jobseeker.png" id="jobseeker_img"></a>
-            </div>
-          </div>
-        </div>
     </div>
-    <div class="ui button">
+  <div class="ui button">
       Follow
     </div>
   </body>

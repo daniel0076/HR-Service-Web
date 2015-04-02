@@ -1,0 +1,15 @@
+.ui.form {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.ui.submit.button {
+    margin-left: 43%;
+    margin-right: auto;
+}
+.ui.segment {
+    margin-left: auto;
+    margin-right: auto;
+    top: 10%;
+}
+
