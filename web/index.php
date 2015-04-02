@@ -1,5 +1,9 @@
 <?php
     session_start();
-    include 'template/menubar.php';
+    include $_SERVER['DOCUMENT_ROOT']."/template/menubar.php";
 ?>
-<body></body>
+<body>
+    <div class="ui button">
+  Follow
+</div>
+</body>
