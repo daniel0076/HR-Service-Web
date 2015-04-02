@@ -1,8 +1,11 @@
 <?php
     session_start();
-    include $_SERVER['DOCUMENT_ROOT']."/template/menubar.php";
 ?>
+<head>
+<?php include 'template/pre_css_js.php';?>
+</head>
 <body>
+<?php include 'template/menubar.php';?>
     <div class="ui button">
   Follow
 </div>
