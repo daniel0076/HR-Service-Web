@@ -9,6 +9,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="static/semantic-ui/dist/semantic.css"/>
     <link rel="stylesheet" type="text/css" href="css/custom.css"/>
     <script src="static/semantic-ui/dist/semantic.js"></script>
+    <script src="js/custom.js"></script>
   </head>
   <body>
     <div></div>
