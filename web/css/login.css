@@ -1,0 +1,17 @@
+body {
+  height: 350px;
+  text-align: center;
+}
+body:before {
+  content: "";
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+#login {
+  display: inline-block;
+  vertical-align: middle;
+  width: 400px;
+  height: 120px;
+}
+

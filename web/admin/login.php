@@ -1,145 +1,122 @@
 <?php
 
-require_once('../static/xajax-0.6/xajax_core/xajax.inc.php');
+require_once('auth/db_auth.php');
+require_once('../static/xajax_core/xajaxAIO.inc.php');
 session_start();
 
 $xajax = new xajax();
-$loginCheck = $xajax->registerFunction('loginCheck');
-$loginCheck->useSingleQuote();
-$loginCheck->addParameter(XAJAX_FORM_VALUES, 'loginForm');
+$login= $xajax->registerFunction('login');
+$login->useSingleQuote();
+$login->addParameter(XAJAX_FORM_VALUES, 'loginForm');
 $xajax->processRequest();
 
-if( isset($_GET['logout_admin']) ) {
-    unset($_SESSION['admin_username']);
-    unset($_SESSION['admin_name']);
-    unset($_SESSION['admin_uid']);
-    unset($_SESSION['admin']);
-    echo "<meta http-equiv=\"refresh\" content=\"0;url=http://CSFresh2014.nctucs.net/apply/login.php\" />\n";
-}
-
-if( isset($_GET['logout']) ) {
-    unset($_SESSION['aid']);
-    unset($_SESSION['name']);
-    echo "<meta http-equiv=\"refresh\" content=\"0;url=http://CSFresh2014.nctucs.net/apply/login.php\" />\n";
-}
-
-function loginCheck($form) {
-    global $mysqli;
+function login($form) {
+    global $db;
     $success = false;
-    $success_admin = false;
+    $boss_success= false;
     $objRes = new xajaxResponse();
-    escape($form, ['name', 'idnum']);
-    if( $mysqli->connect_error )
-        $msg = "資料庫錯誤，請稍後再試。";
-    else {
-        $query_admin = "SELECT * FROM `Admin` WHERE `username` = '$form[name]' AND `password` = sha2('" . $form["idnum"].SALT ."',256) LIMIT 1;";
-        $query = "SELECT * FROM `Applications` WHERE `name` = '$form[name]' AND `idnum` = '$form[idnum]'LIMIT 1;";
-        if( $result = $mysqli->query($query_admin) ) {
-            if( $result->num_rows ) {
-                $success_admin = true;
-                $row = $result->fetch_array();
-                $_SESSION['admin_username'] = $row['username'];
-                $_SESSION['admin_name'] = $row['name'];
-                $_SESSION['admin_uid'] = $row['uid'];
-                $_SESSION['admin'] = true;
-                $msg = "系統管理員登入成功！";
-            }
+    $boss_query="SELECT * FROM `employer` WHERE `account` = :user AND `password` = :password LIMIT 1";
+    $user_query="SELECT * FROM `user` WHERE `account` = :user AND `password` = :password LIMIT 1";
+
+    try {
+        $check= $db->prepare($boss_query);
+        $check->execute(array(':user'=> $form['user'],':password'=> hash('sha256',$form['password']) ));
+        $result=$check->fetch(PDO::FETCH_ASSOC);
+        if($result>0){
+            $boss_success=true;
+            $_SESSION['is_authed']=true;
+            $_SESSION['is_boss']=true;
+            $_SESSION['boss_id']=$result['id'];
+            $_SESSION['boss_name']=$result['account'];
+            $msg="人資主管，登入成功";
         }
-        else
-            $msg = "資料庫錯誤，請稍後再試。<img src=\"" . ROOT . "OAO.gif\" />";
-        $result->free();
-        if( !$success_admin ) {
-            if( $result = $mysqli->query($query) ) {
-                if( !$result->num_rows )
-                    $msg = "登入失敗。";
-                else {
-                    $success = true;
-                    $row = $result->fetch_array();
-                    $_SESSION['aid'] = $row['aid'];
-                    $_SESSION['name'] = $row['name'];
-                    $msg = "登入成功！";
-                }
+    } catch (PDOException $e) {
+        $msg="資料庫錯誤:$e";
+    }
+
+    if( !$boss_success) {
+        try {
+            $check= $db->prepare($user_query);
+            $check->execute(array(':user'=> $form['user'],':password'=> hash('sha256',$form['password']) ));
+            $result=$check->fetch(PDO::FETCH_ASSOC);
+            if($result>0){
+                $success=true;
+                $_SESSION['is_authed']=true;
+                $_SESSION['is_user']=true;
+                $_SESSION['user_id']=$result['id'];
+                $_SESSION['user_name']=$result['account'];
+                $msg="求職者，登入成功";
+            }else {
+                $msg="登入失敗，請檢查帳號或密碼";
             }
-            else
-                $msg = "資料庫錯誤，請稍後再試。<img src=\"" . ROOT . "OAO.gif\" />";
-            $result->free();
+        } catch (PDOException $e) {
+            $msg="資料庫錯誤:$e";
         }
     }
     $objRes->assign('response', 'innerHTML', $msg);
-    if( $success_admin ) {
+    if( $boss_success) {
         $objRes->call("loginAdminSucceeded");
-        $objRes->redirect("admin.php");
+        $objRes->redirect("../index.php");
     }
     else if( $success ) {
         $objRes->call("loginSucceeded");
-        $objRes->redirect("payment.php");
+        $objRes->redirect("../index.php");
     }
     else $objRes->call("loginFailed");
     return $objRes;
 }
-function escape(&$form, $checking) {
-    global $mysqli;
-    foreach($checking as $str) {
-        $form[$str] = htmlspecialchars(@$form[$str]);
-        $form[$str] = $mysqli->real_escape_string($form[$str]);
-    }
-}
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html">
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>登入系統 | 2014 交大資工 迎新宿營</title>
+    <title>登入 | DB_LAB1 </title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js?ver=2.0.3"></script>
-    <link rel="stylesheet" type="text/css" href="../css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="../css/semantic.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/login.css" />
-    <script type="text/javascript" src="../js/semantic.js"></script>
-    <script type="text/javascript">
+    <link rel="stylesheet" type="text/css" href="../static/semantic-ui/dist/semantic.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/login.css"/>
+    <script type="text/javascript" src="../static/semantic-ui/dist/semantic.js"></script>
+<script type="text/javascript">
 /* <![CDATA[ */
 function loginAdminSucceeded() {
     $('#response').removeClass("blue").removeClass("error").addClass("positive").show();
-    console.log("login succeeded");
 }
 function loginSucceeded() {
     $('#response').removeClass("blue").removeClass("error").addClass("positive").show();
-    console.log("login succeeded");
 }
 function loginFailed() {
     $('#response').removeClass("blue").removeClass("positive").addClass("error").show();
-    console.log("login failed");
 }
 $(function() {
     $('#loginForm')
         .form({
-            name: { identifier: 'name', rules: [{type: 'empty'},] },
-            idnum: { identifier: 'idnum', rules: [{type: 'empty'},] }
-        });
+        name: { identifier: 'user', rules: [{type: 'empty'},] },
+            idnum: { identifier: 'password', rules: [{type: 'empty'},] }
+});
 });
 /* ]]> */
-    </script>
-    <?php $xajax->printJavascript(ROOT.'include'); ?>
+</script>
+    <?php $xajax->printJavascript('../static/'); ?>
 </head>
 
 <body>
-    <div class="container" id="main">
+    <div class="container" id="login">
         <div class="ui large attached message"> 登入 </div>
         <div class="ui blue attached fluid message" id="response"> </div>
-        <form class="ui form attached fluid segment" name="loginForm" id="loginForm" onsubmit="$('#loginForm').form('validate form');<?php $loginCheck->printScript(); ?>;return false;">
+        <form class="ui form attached fluid segment" name="loginForm" id="loginForm" onsubmit="$('#loginForm').form('validate form');<?php $login->printScript(); ?>;return false;">
             <div class="field">
-                <label>姓名</label>
+                <label>帳號</label>
                 <div class="ui left labeled icon input">
                     <i class="user icon"></i>
-                    <input name="name" type="text" placeholder="姓名" autocomplete="off">
+                    <input name="user" type="text" autocomplete="off">
                     <div class="ui corner label"> <i class="icon asterisk"></i> </div>
                 </div>
             </div>
             <div class="field">
-                <label>身分證字號</label>
+                <label>密碼</label>
                 <div class="ui left labeled icon input">
                     <i class="lock icon"></i>
-                    <input name="idnum" type="password" placeholder="身分證字號">
+                    <input name="password" type="password">
                     <div class="ui corner label"> <i class="icon asterisk"></i> </div>
                 </div>
             </div>
@@ -148,7 +125,5 @@ $(function() {
             </div>
         </form>
     </div>
-
 </body>
 </html>
-
