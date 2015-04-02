@@ -1,16 +1,19 @@
 <?php
     class boss
     {
-        private static $db=null;
+
+        private static $myPDO=null;
         public function __construct()
         {
-            try
+            if(isset($GLOBALS['db']))
             {
-                self::$db= new PDO('mysql:host=localhost;dbname=db-lab1;charset=utf8', 'db-lab1', "adgjl';khfs");
-            } catch (PDOException $e)
-            {
-                echo 'Connection failed!' . $e->getMessage() ;
+                self::$myPDO = $GLOBALS['db'];
             }
+            else
+            {
+                echo "Please require admin/auth/db_auth.php\n";
+            }
+            
         }
 
         public function BossRegister($account,$password,$phone,$email)
@@ -18,7 +21,7 @@
             try
             {
                 $sql = "SELECT account FROM employer WHERE account = :account";
-                $run = self::$db->prepare($sql);
+                $run = self::$myPDO->prepare($sql);
                 $run->execute(array(':account'=>$account));
                 if($run->rowCount())
                 {
@@ -26,7 +29,7 @@
                     return False;
                 }
                 $sql = "INSERT INTO employer (account,password,phone,mail) VALUES (:account,:password,:phone,:email)";
-                $run = self::$db->prepare($sql);
+                $run = self::$myPDO->prepare($sql);
                 $run->execute(array(':account'=>$account,
                                     ':password'=>$password,
                                     ':phone'=>$phone,
@@ -40,10 +43,6 @@
         }
         public function PostJob($employer,$occupation,$location,$working_time,$experience,$salary)
         {
-            try
-            {
-                $sql = "INSERT INTO "
-            }
         }
 
         public function UpdateJob($occupation,$location,$working_time,$experience,$salary)
@@ -59,7 +58,6 @@
 #    class jobseeker
 #    {
 #
-#        public $db = new PDO('mysql:host=localhost;dbname=db-lab1;charset=utf8', 'db_lab1', 'LYftspRzKPyCaVXj');
 #        public function JobSeekerRegister($account,$password,$education,$expected_salary,$phone,$gender,$age,$email)
 #        {
 #        }
