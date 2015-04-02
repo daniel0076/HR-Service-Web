@@ -5,9 +5,24 @@ require_once('../static/xajax_core/xajaxAIO.inc.php');
 session_start();
 
 if(isset($_GET['logout'])){
-    unset($_SESSION);
+    unset($_SESSION['is_authed']);
+    if(isset($_SESSION['is_boss'])){
+        unset($_SESSION['is_boss']);
+        unset($_SESSION['boss_id']);
+        unset($_SESSION['boss_name']);
+    }
+    if(isset($_SESSION['is_user'])){
+        unset($_SESSION['is_user']);
+        unset($_SESSION['user_id']);
+        unset($_SESSION['user_name']);
+    }
     header("Location : ../index.php");
-    die();
+}
+if(isset($_SESSION['is_authed'])){
+    if($_SESSION['is_authed']){
+        echo "<script>alert('你已經登入了');location.href='../index.php'</script>";
+        die();
+    }
 }
 
 $xajax = new xajax();
@@ -106,6 +121,10 @@ $(function() {
 </head>
 
 <body>
+<div id="navbar">
+<?php require_once('../template/menubar.php');?>
+</div>
+  <div class="content">
     <div class="container" id="login">
         <div class="ui large attached message"> 登入 </div>
         <div class="ui blue attached fluid message" id="response"> </div>
@@ -131,5 +150,6 @@ $(function() {
             </div>
         </form>
     </div>
+</div>
 </body>
 </html>

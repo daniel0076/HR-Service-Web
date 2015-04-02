@@ -12,7 +12,7 @@
     </div>-->
     <div class="right menu">
     <?php
-        if(!isset($_SESSION['is_user'])&&!isset($_SESSION['is_boss']))
+        if(!isset($_SESSION['is_authed']))
         {
             include 'before_login.php';
         }
