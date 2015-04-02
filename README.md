@@ -40,3 +40,28 @@
   + is_boss : True for identity is admin
     + boss_id
     + boss_name
+
+### Foreign Keys
++ location
+    + Taipei
+    + New Taipei
+    + HsinChu
+    + Taoyuan
+    + Taichung
+    + Tainan
+    + Kaohsiung
++ occupation
+    + Pusheen
+    + Tuzki
+    + Mugsy
+    + Bun
+    + Minion
+    + Pandadog
+    + Koko
++ specialty
+    + sleep
+    + eat
+    + kiss
+    + blink
+    + break the cup
+    + bully the boss

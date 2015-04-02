@@ -1,3 +1,7 @@
+<head>
+<?php include '../template/pre_css_js.php';?>
+</head>
+<body>
 <?php
     include '../template/menubar.php';
 ?>
@@ -73,3 +77,4 @@
         <div class="ui submit button">Submit</div>
     </div>
 </div>
+</body>
