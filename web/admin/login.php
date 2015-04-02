@@ -4,6 +4,12 @@ require_once('auth/db_auth.php');
 require_once('../static/xajax_core/xajaxAIO.inc.php');
 session_start();
 
+if(isset($_GET['logout'])){
+    unset($_SESSION);
+    header("Location : ../index.php");
+    die();
+}
+
 $xajax = new xajax();
 $login= $xajax->registerFunction('login');
 $login->useSingleQuote();
