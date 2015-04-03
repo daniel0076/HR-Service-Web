@@ -1,7 +1,7 @@
 <?php
 
-require_once('auth/db_auth.php');
-require_once('../static/xajax_core/xajaxAIO.inc.php');
+require_once('admin/auth/db_auth.php');
+require_once('static/xajax_core/xajaxAIO.inc.php');
 session_start();
 
 if(isset($_GET['logout'])){
@@ -16,7 +16,7 @@ if(isset($_GET['logout'])){
         unset($_SESSION['user_id']);
         unset($_SESSION['user_name']);
     }
-    header("Location : ../index.php");
+    header("Location : index.php");
 }
 if(isset($_SESSION['is_authed'])){
     if($_SESSION['is_authed']){
@@ -77,11 +77,11 @@ function login($form) {
     $objRes->assign('response', 'innerHTML', $msg);
     if( $boss_success) {
         $objRes->call("loginAdminSucceeded");
-        $objRes->redirect("../index.php");
+        $objRes->redirect("index.php");
     }
     else if( $success ) {
         $objRes->call("loginSucceeded");
-        $objRes->redirect("../index.php");
+        $objRes->redirect("index.php");
     }
     else $objRes->call("loginFailed");
     return $objRes;
@@ -94,9 +94,9 @@ function login($form) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>登入 | DB_LAB1 </title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js?ver=2.0.3"></script>
-    <link rel="stylesheet" type="text/css" href="../static/semantic-ui/dist/semantic.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/login.css"/>
-    <script type="text/javascript" src="../static/semantic-ui/dist/semantic.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/semantic-ui/dist/semantic.css"/>
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>
+    <script type="text/javascript" src="static/semantic-ui/dist/semantic.js"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
 function loginAdminSucceeded() {
@@ -117,12 +117,12 @@ $(function() {
 });
 /* ]]> */
 </script>
-    <?php $xajax->printJavascript('../static/'); ?>
+    <?php $xajax->printJavascript('static/'); ?>
 </head>
 
 <body>
 <div id="navbar">
-<?php require_once('../template/menubar.php');?>
+<?php require_once('template/menubar.php');?>
 </div>
   <div class="content">
     <div class="container" id="login">

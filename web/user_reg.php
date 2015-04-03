@@ -1,11 +1,11 @@
 <head>
-    <?php include '../template/pre_css_js.php';?>
-    <link rel="stylesheet" href="../css/register.css">
+    <?php include 'template/pre_css_js.php';?>
+    <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
 <?php
-    include '../template/menubar.php';
-    include '../template/register_modal_.php';
+    include 'template/menubar.php';
+    include 'template/register_modal_.php';
 ?>
 <div class="ui segment">
     <div class="ui form" id="jobseekerform" action="reg_jobseeker.php" method="POST">
