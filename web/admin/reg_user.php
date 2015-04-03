@@ -28,7 +28,6 @@ function regCheck($form) {
     {
         $error=false;
         $msg='Reg success';
-        header('Location: ../index.php');
     }
     if($error){
         $objRes->call("accountExist");
