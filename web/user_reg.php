@@ -5,6 +5,7 @@
     <script type="text/javascript" src="js/register_button.js"></script>
     <script type="text/javascript" src="js/user_reg_form.js"></script>
     <link rel="stylesheet" href="css/register.css">
+    <title>User Register</title>
 </head>
 <body>
 <?php

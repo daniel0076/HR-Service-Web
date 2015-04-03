@@ -10,6 +10,8 @@ session_start();
     <link rel="stylesheet" type="text/css" href="css/custom.css"/>
     <script src="static/semantic-ui/dist/semantic.js"></script>
     <script src="js/register_button.js"></script>
+    <title>Just Sudo It</title>
+    <link rel="shortcut icon" href="image/icon.png">
   </head>
   <body>
 <?php include 'template/register_modal.php';?>

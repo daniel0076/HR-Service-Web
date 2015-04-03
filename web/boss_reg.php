@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/register.css">
     <script type="text/javascript" src="js/register_button.js"></script>
     <script type="text/javascript" src="js/boss_reg_form.js"></script>
+    <title>Boss Register</title>
 </head>
 <body>
 <?php
