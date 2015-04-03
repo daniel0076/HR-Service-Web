@@ -21,11 +21,11 @@
 ?>
 <div class="container">
 <form class="ui form" id="jobseekerform" name="jobseekerform" onsubmit="<?php $reg->printScript();?>;return false;">
-        <h4 class="ui dividing header">Job Seeker</h4>
+        <h4 class="ui dividing header">立即註冊，找個好工作</h4>
         <div class="ui blue attached fluid message" id="response"> </div>
         <div class="field">
             <label>Account</label>
-            <input placeholder="Account" type="text" name="account">
+            <input placeholder="Account" type="text" name="account" id="account">
         </div>
         <div class="field">
             <label>Password</label>

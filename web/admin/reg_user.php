@@ -16,25 +16,42 @@ $xajax->processRequest();
 
 function regCheck($form) {
     $objRes = new xajaxResponse();
+
+    foreach ($form as $x) {
+        if(trim($x)==""){
+            $msg="您有空白的欄位";
+            $objRes->call("Error");
+            $objRes->assign('response', 'innerHTML', $msg);
+            return $objRes;
+        }
+    }
+
     $db = new JobSeeker();
-    $res = $db->JobSeekerRegister($form['account'],$form['password'],$form['education'],$form['salary'],$form['phone'],$form['gender'],$form['age'],$form['email']);
-    $res=true;
-    if(!$res)
-    {
+    $avail=$db->checkAvail($form['account']);
+
+    if($avail){
+        $res = $db->JobSeekerRegister($form['account'],$form['password'],$form['education'],$form['salary'],$form['phone'],$form['gender'],$form['age'],$form['email']);
+
+        if($res){
+            $error=false;
+            $msg='註冊成功';
+        }else{
+            $error=true;
+            $msg='資料庫錯誤，請稍後再試';
+        }
+
+    }else{
         $error=true;
-        $msg='Account already exist!';
+        $msg='帳號己經存在，請試試別的帳號';
     }
-    else
-    {
-        $error=false;
-        $msg='Reg success';
-    }
+
     if($error){
         $objRes->call("accountExist");
     }else{
         $objRes->call("Succeeded");
-        header('Location: ../index.php');
+        $objRes->redirect("index.php");
     }
+
     $objRes->assign('response', 'innerHTML', $msg);
 return $objRes;
 };
