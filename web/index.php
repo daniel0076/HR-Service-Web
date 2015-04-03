@@ -9,7 +9,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="static/semantic-ui/dist/semantic.css"/>
     <link rel="stylesheet" type="text/css" href="css/custom.css"/>
     <script src="static/semantic-ui/dist/semantic.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="js/register_button.js"></script>
   </head>
   <body>
 <?php include 'template/register_modal.php';?>

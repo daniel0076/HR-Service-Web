@@ -1,17 +1,19 @@
 <head>
 <?php
+    session_start();
     include 'template/pre_css_js.php';
 ?>
     <link rel="stylesheet" href="css/register.css">
-
+    <script type="text/javascript" src="js/register_button.js"></script>
+    <script type="text/javascript" src="js/boss_reg_form.js"></script>
 </head>
 <body>
 <?php
     include 'template/menubar.php';
-    include 'template/register_modal_.php';
+    include 'template/register_modal.php';
 ?>
 <div class="ui segment">
-<form class="ui form" id="bossform" action="reg_boss.php" method="POST">
+<form class="ui form" id="bossform" action="admin/reg_boss.php" method="POST">
 <!--  <div class="ui error message">
     <div class="header">Action Forbidden</div>
     <p>You can only sign up for an account once with a given e-mail address.</p>
@@ -37,7 +39,7 @@
       <label>Email</label>
       <input placeholder="Email" type="text" name="email">
     </div>
-    <button class="ui submit button" type="submit">Submit</button>
+    <div class="ui submit button" type="submit">Submit</div>
 </form>
 </div>
 </body>

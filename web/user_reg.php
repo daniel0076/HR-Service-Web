@@ -1,14 +1,18 @@
 <head>
-    <?php include 'template/pre_css_js.php';?>
+<?php 
+    session_start();
+    include 'template/pre_css_js.php';?>
+    <script type="text/javascript" src="js/register_button.js"></script>
+    <script type="text/javascript" src="js/user_reg_form.js"></script>
     <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
 <?php
     include 'template/menubar.php';
-    include 'template/register_modal_.php';
+    include 'template/register_modal.php';
 ?>
 <div class="ui segment">
-    <div class="ui form" id="jobseekerform" action="reg_jobseeker.php" method="POST">
+    <form class="ui form" id="jobseekerform" action="admin/reg_jobseeker.php" method="POST">
         <h4 class="ui dividing header">Job Seeker</h4>
         <div class="field">
             <label>Account</label>
@@ -76,7 +80,7 @@
             <label>Email</label>
             <input placeholder="Email" type="text" name="email">
         </div>
-        <div class="ui submit button">Submit</div>
-    </div>
+        <div class="ui submit button" type="submit">Submit</div>
+    </form>
 </div>
 </body>

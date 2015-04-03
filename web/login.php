@@ -97,6 +97,7 @@ function login($form) {
     <link rel="stylesheet" type="text/css" href="static/semantic-ui/dist/semantic.css"/>
     <link rel="stylesheet" type="text/css" href="css/login.css"/>
     <script type="text/javascript" src="static/semantic-ui/dist/semantic.js"></script>
+    <script type="text/javascript" src="js/register_button.js"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
 function loginAdminSucceeded() {
