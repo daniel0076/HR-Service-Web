@@ -33,7 +33,7 @@ session_start();
               <a class="item" id="reg_button">
                   <i class="plus icon"></i> Register
               </a>
-              <a class="item" href="admin/login.php">
+              <a class="item" href="login.php">
                   <i class="sign in icon"></i> Log in
               </a>
               ';
@@ -41,7 +41,7 @@ session_start();
              else
              {
                echo '
-                <a class="item" href="admin/login.php?logout">
+                <a class="item" href="login.php?logout">
                     <i class="sign out icon"></i> Log out
                 </a>
             ';

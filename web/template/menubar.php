@@ -1,6 +1,6 @@
 <div></div>
 <div class="ui green inverted menu">
-    <a class="item" href="../index.php">
+    <a class="item" href="index.php">
         <i class="lightning icon"></i> Just Sudo It
     </a>
 <!--    <div class="ui pointing dropdown link item">
@@ -26,9 +26,9 @@
             <div class="header">Account Type</div>
         <div class="content">
         <div class="ui small images" align="middle">
-            <a href="../admin/reg_boss.php"><img src="../image/boss.png" id="boss_img"></a>
+            <a href="admin/reg_boss.php"><img src="image/boss.png" id="boss_img"></a>
             <div type="hidden"></div>
-            <a href="../admin/reg_jobseeker.php"><img src="../image/jobseeker.png" id="jobseeker_img"></a>
+            <a href="admin/reg_jobseeker.php"><img src="image/jobseeker.png" id="jobseeker_img"></a>
         </div>
     </div>
     </div>

@@ -1,14 +1,14 @@
 <head>
-<?php 
-    include '../template/pre_css_js.php';
+<?php
+    include 'template/pre_css_js.php';
 ?>
-    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="css/register.css">
 
 </head>
 <body>
 <?php
-    include '../template/menubar.php';
-    include '../template/register_modal_.php';
+    include 'template/menubar.php';
+    include 'template/register_modal_.php';
 ?>
 <div class="ui segment">
 <form class="ui form" id="bossform" action="reg_boss.php" method="POST">
