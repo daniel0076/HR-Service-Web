@@ -1,10 +1,9 @@
 <?php
-    class Boss
+    class JobSeeker
     {
-        private static $myPDO=null;
+        private static $myPDO = null;
         public function __construct()
         {
-            echo '!';
             if(isset($GLOBALS['db']))
             {
                 self::$myPDO = $GLOBALS['db'];
@@ -12,15 +11,13 @@
             else
             {
                 echo "Please require admin/auth/db_auth.php\n";
-            }
-            
+            } 
         }
-
-        public function BossRegister($account,$password,$phone,$email)
+        public function JobSeekerRegister($account,$password,$education,$expected_salary,$phone,$gender,$age,$email)
         {
             try
             {
-                $sql = "SELECT account FROM employer WHERE account = :account";
+                $sql = "SELECT account FROM user WHERE account = :account";
                 $run = self::$myPDO->prepare($sql);
                 $run->execute(array(':account'=>$account));
                 if($run->rowCount())
@@ -28,11 +25,15 @@
                     echo "account exist";
                     return False;
                 }
-                $sql = "INSERT INTO employer (account,password,phone,email) VALUES (:account,:password,:phone,:email)";
+                $sql = "INSERT INTO account (account,password,education,expected_salary,phone,gender,age,email) VALUES (:account,:password,:education,:expected_salary,:phone,:gender,:age,:email)";
                 $run = self::$myPDO->prepare($sql);
                 $run->execute(array(':account'=>$account,
                                     ':password'=>$password,
+                                    ':education'=>$education,
+                                    ':expected_salary'=>$expected_salary,
                                     ':phone'=>$phone,
+                                    ':gender'=>$gender,
+                                    ':age'=>$age,
                                     ':email'=>$email));
             } catch (PDOException $e)
             {
@@ -40,27 +41,7 @@
                 return False;
             }
             return True;
-
+ 
         }
-#        public function PostJob($employer,$occupation,$location,$working_time,$experience,$salary)
-#        {
-#        }
-#
-#        public function UpdateJob($occupation,$location,$working_time,$experience,$salary)
-#        {
-#        }
-#
-#        public function RemoveJob()
-#        {
-#        }
-#
-#
-#    }
-#    class jobseeker
-#    {
-#
-#        public function JobSeekerRegister($account,$password,$education,$expected_salary,$phone,$gender,$age,$email)
-#        {
-#        }
+
     }
-?>
