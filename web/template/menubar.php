@@ -26,9 +26,9 @@
             <div class="header">Account Type</div>
         <div class="content">
         <div class="ui small images" align="middle">
-            <a href="admin/reg_boss.php"><img src="image/boss.png" id="boss_img"></a>
+            <a href="boss_reg.php"><img src="image/boss.png" id="boss_img"></a>
             <div type="hidden"></div>
-            <a href="admin/reg_jobseeker.php"><img src="image/jobseeker.png" id="jobseeker_img"></a>
+            <a href="user_reg.php"><img src="image/jobseeker.png" id="jobseeker_img"></a>
         </div>
     </div>
     </div>
