@@ -12,6 +12,7 @@
     <script type="text/javascript" src="js/user_reg_form.js"></script>
     <link rel="stylesheet" href="css/register.css">
     <?php $xajax->printJavascript('static/'); ?>
+    <title>User Register</title>
 </head>
 <body>
 <?php
