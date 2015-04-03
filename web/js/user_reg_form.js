@@ -1,4 +1,12 @@
+function accountExist() {
+    $('#response').removeClass("blue").removeClass("positive").addClass("error").show();
+};
+function Succeeded() {
+    $('#response').removeClass("blue").removeClass("error").addClass("positive").show();
+};
+
 $(document).ready(function(){
+    $('#response').hide();
     $('#jobseekerform').form({
         account: {
             identifier  :'account',

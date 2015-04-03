@@ -1,19 +1,27 @@
-<head>
-<?php 
+<?php
     session_start();
-    include 'template/pre_css_js.php';?>
+    require_once('admin/reg_user.php');
+?>
+
+<!DOCTYPE html>
+<head>
+<?php
+    include 'template/pre_css_js.php';
+?>
     <script type="text/javascript" src="js/register_button.js"></script>
     <script type="text/javascript" src="js/user_reg_form.js"></script>
     <link rel="stylesheet" href="css/register.css">
+    <?php $xajax->printJavascript('static/'); ?>
 </head>
 <body>
 <?php
     include 'template/menubar.php';
     include 'template/register_modal.php';
 ?>
-<div class="ui segment">
-    <form class="ui form" id="jobseekerform" action="admin/reg_jobseeker.php" method="POST">
+<div class="container">
+<form class="ui form" id="jobseekerform" name="jobseekerform" onsubmit="<?php $reg->printScript();?>;return false;">
         <h4 class="ui dividing header">Job Seeker</h4>
+        <div class="ui blue attached fluid message" id="response"> </div>
         <div class="field">
             <label>Account</label>
             <input placeholder="Account" type="text" name="account">

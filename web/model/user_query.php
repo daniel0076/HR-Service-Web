@@ -11,7 +11,7 @@
             else
             {
                 echo "Please require admin/auth/db_auth.php\n";
-            } 
+            }
         }
         public function JobSeekerRegister($account,$password,$education,$expected_salary,$phone,$gender,$age,$email)
         {
@@ -41,7 +41,5 @@
                 return False;
             }
             return True;
- 
         }
-
     }
