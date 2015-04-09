@@ -31,27 +31,13 @@ session_start();
           <?php
              if(!isset($_SESSION['is_authed']))
              {
-               echo '
-              <a class="item" id="reg_button">
-                  <i class="plus icon"></i> Register
-              </a>
-              <a class="item" href="login.php">
-                  <i class="sign in icon"></i> Log in
-              </a>
-              ';
+                 require_once('template/before_login.php');
              }
              else
              {
-               echo '
-                <a class="item" href="login.php?logout">
-                    <i class="sign out icon"></i> Log out
-                </a>
-            ';
+                 require_once('template/after_login.php');
              }?>
         </div>
-    </div>
-  <div class="ui button">
-      Follow
     </div>
   </body>
 </html>

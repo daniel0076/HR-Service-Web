@@ -1,4 +1,9 @@
 <?php
+if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == ""){
+        $redirect = "https://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+            header("Location: $redirect");
+            die();
+}
 
 require_once('admin/auth/db_auth.php');
 require_once('static/xajax_core/xajaxAIO.inc.php');
@@ -87,6 +92,7 @@ function login($form) {
     return $objRes;
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>

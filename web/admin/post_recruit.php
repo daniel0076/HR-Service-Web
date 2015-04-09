@@ -1,20 +1,19 @@
 <?php
-
-if(isset($_SESSION['is_user']))
+if(! (isset($_SESSION['is_authed']) && isset($_SESSION['is_boss'])) )
 {
     header('Location: ../index.php');
 }
 require('admin/auth/db_auth.php');
-require('model/user_query.php');
+require('model/boss_query.php');
 require_once('static/xajax_core/xajaxAIO.inc.php');
 
 $xajax = new xajax();
-$reg= $xajax->registerFunction('regCheck');
+$reg= $xajax->registerFunction('postRecruit');
 $reg->useSingleQuote();
-$reg->addParameter(XAJAX_FORM_VALUES, 'jobseekerform');
+$reg->addParameter(XAJAX_FORM_VALUES, 'recruitForm');
 $xajax->processRequest();
 
-function regCheck($form) {
+function postRecruit($form) {
     $objRes = new xajaxResponse();
 
     foreach ($form as $x) {
@@ -26,25 +25,9 @@ function regCheck($form) {
         }
     }
 
-    $db = new JobSeeker();
-    $avail=$db->checkAvail($form['account']);
-
-    if($avail){
+    $db = new Boss();
         $res = $db->JobSeekerRegister($form['account'],$form['password'],$form['education'],$form['salary'],$form['phone'],$form['gender'],$form['age'],$form['email']);
 
-        if($res){
-            $error=false;
-            $msg='註冊成功';
-        }else{
-            $error=true;
-            $msg='資料庫錯誤，請稍後再試';
-        }
-
-    }else{
-        $error=true;
-        $msg='帳號己經存在，請試試別的帳號';
-        $objRes->assign('error', 'innerHTML', $msg);
-    }
 
     if($error){
         $objRes->call("accountExist");
