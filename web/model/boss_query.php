@@ -51,6 +51,26 @@
             return True;
 
         }
+        public function DropdownValue($attr)
+        {
+            try
+            {
+                $sql="SELECT $attr from $attr";
+                $run=self::$myPDO->prepare($sql);
+                $run->execute();
+                $res=$run->fetchColumn();
+            } catch (PDOException $e)
+            {
+                echo 'Can\'t find ' . $attr . $e->getMessage();
+                return false;
+            }
+            if($res)
+            {
+                return $res;
+            }
+            return false;
+
+        }
         public function PostJob($employer_id,$occupation_id,$location_id,$working_time,$education,$experience,$salary)
         {
             try
