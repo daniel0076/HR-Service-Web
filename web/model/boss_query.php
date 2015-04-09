@@ -13,9 +13,7 @@
             {
                 echo "Please require admin/auth/db_auth.php\n";
             }
-            
         }
-
         public function BossRegister($account,$password,$phone,$email)
         {
             try
@@ -42,9 +40,28 @@
             return True;
 
         }
-#        public function PostJob($employer,$occupation,$location,$working_time,$experience,$salary)
-#        {
-#        }
+        public function PostJob($employer_id,$occupation_id,$location_id,$working_time,$education,$experience,$salary)
+        {
+            try
+            {
+                $sql = "INSERT INTO `recruit` (`employer_id`, `occupation_id`, `location_id`, `working_time`, `education`, `experience`, `salary`) VALUES (:employer_id, :occupation_id, :location_id, :working_time, :education, :experience, :salary)";
+                $run = self::$myPDO->prepare($sql);
+                $run->execute(array(':employer_id'=>$employer_id,
+                                    ':occupation_id'=>$occupation_id,
+                                    ':location_id'=>$location_id,
+                                    ':working_time'=>$working_time,
+                                    ':education'=>$education,
+                                    ':experience'=>$experience,
+                                    ':salary'=>$salary
+                                ));
+            } catch (PDOException $e)
+            {
+                echo 'Register failed!' . $e->getMessage();
+                return False;
+            }
+            return True;
+
+        }
 #
 #        public function UpdateJob($occupation,$location,$working_time,$experience,$salary)
 #        {
