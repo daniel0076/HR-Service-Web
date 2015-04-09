@@ -44,10 +44,10 @@ session_start();
     <div class="container">
       <div class="ui segment">
           <!--display all post-->
-         <?php 
+         <?php
           if(!isset($_SESSION['is_boss']))
           { ?>
-         <div class="ui section divider"></div> 
+         <div class="ui section divider"></div>
           <div class="massive ui animated fade yellow button" id="post_button">
             <div class="visible content">New Post</div>
             <div class="hidden content"><i class="plus icon"></i></div>
@@ -60,7 +60,7 @@ session_start();
               <div class="inline fields">
                 <div class="field">
                   <label>Location</label>
-                  <div class="ui search dropdown">
+                  <select class="ui search dropdown" name="location_id">
 <?php
 require('admin/auth/db_auth.php');
 require('admin/reg_boss.php');
@@ -68,30 +68,30 @@ $db = new Boss();
 $res=$db->DropdownValue("location");
 if($res!="")
 {
-    
+
 }
 ?>
-                  </div>
+                  </select>
               </div>
               <div class="field">
                 <label>Occupation</label>
-                <input type="text" placeholder="Occupation">
+                <input name="occupation_id" type="text" placeholder="Occupation">
               </div>
               <div class="field">
                 <label>Working Time</label>
-                <input type="text" placeholder="Working Time">
+                <input type="text" name="worktime" placeholder="Working Time">
               </div>
               <div class="field">
                 <label>Education</label>
-                <input type="text" placeholder="Education">
+                <input type="text" name="education" placeholder="Education">
               </div>
               <div class="field">
                 <label>Experience</label>
-                <input type="text" placeholder="Experience">
+                <input type="text" name="experience" placeholder="Experience">
               </div>
               <div class="field">
                 <label>Salary</label>
-                <input type="text" placeholder="Salary">
+                <input type="text" name="salary" placeholder="Salary">
               </div>
             </div>
           </form>
