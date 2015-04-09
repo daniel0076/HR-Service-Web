@@ -71,13 +71,13 @@
             return false;
 
         }
-        public function PostJob($employer_id,$occupation_id,$location_id,$working_time,$education,$experience,$salary)
+        public function PostJob($boss_id,$occupation_id,$location_id,$working_time,$education,$experience,$salary)
         {
             try
             {
                 $sql = "INSERT INTO `recruit` (`employer_id`, `occupation_id`, `location_id`, `working_time`, `education`, `experience`, `salary`) VALUES (:employer_id, :occupation_id, :location_id, :working_time, :education, :experience, :salary)";
                 $run = self::$myPDO->prepare($sql);
-                $run->execute(array(':employer_id'=>$employer_id,
+                $run->execute(array(':employer_id'=>$boss_id,
                                     ':occupation_id'=>$occupation_id,
                                     ':location_id'=>$location_id,
                                     ':working_time'=>$working_time,
