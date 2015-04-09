@@ -52,35 +52,54 @@ session_start();
             <div class="visible content">New Post</div>
             <div class="hidden content"><i class="plus icon"></i></div>
           </div>
-          <div class="ui fullscreen modal" id="post_modal">
+          <div class="ui modal" id="post_modal">
             <i class="close icon"></i>
             <div class="header">New Post</div>
             <div class="content">
             <form class="ui form">
-              <div class="inline fields">
+              <div class="three fields">
                 <div class="field">
                   <label>Location</label>
-                  <select class="ui search dropdown" name="location_id">
 <?php
 require('admin/auth/db_auth.php');
 require('admin/reg_boss.php');
+?>
+                  <select class="ui search dropdown" name="location_id">
+<?php
 $db = new Boss();
 $res=$db->DropdownValue("location");
+if($res)
+{
     foreach($res as $value)
     {
-        echo "<option value='" . $value . "'>" . $value . "</option>";
+        echo "<option value='" . $value['id'] . "'>" . $value['location'] . "</option>";
     }
+}
 ?>
                   </select>
               </div>
               <div class="field">
                 <label>Occupation</label>
-                <input name="occupation_id" type="text" placeholder="Occupation">
+
+                  <select class="ui search dropdown" name="occupation_id">
+<?php
+$res=$db->DropdownValue("occupation");
+if($res)
+{
+    foreach($res as $value)
+    {
+        echo "<option value='" . $value['id'] . "'>" . $value['occupation'] . "</option>";
+    }
+}
+?>
+                </select>
               </div>
               <div class="field">
                 <label>Working Time</label>
                 <input type="text" name="worktime" placeholder="Working Time">
               </div>
+            </div>
+            <div class="three fields">
               <div class="field">
                 <label>Education</label>
                 <input type="text" name="education" placeholder="Education">

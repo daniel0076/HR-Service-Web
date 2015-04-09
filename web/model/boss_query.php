@@ -55,10 +55,10 @@
         {
             try
             {
-                $sql="SELECT $attr from $attr";
+                $sql="SELECT * from $attr";
                 $run=self::$myPDO->prepare($sql);
                 $run->execute();
-                $res=$run->fetchColumn();
+                $res=$run->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e)
             {
                 echo 'Can\'t find ' . $attr . $e->getMessage();
