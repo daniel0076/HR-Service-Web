@@ -2,7 +2,7 @@
 
 if(isset($_SESSION['is_user']))
 {
-    header('Location: ../index.php');
+    header('Location: index.php');
 }
 require('admin/auth/db_auth.php');
 require('model/user_query.php');

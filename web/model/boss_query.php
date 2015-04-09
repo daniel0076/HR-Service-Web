@@ -14,18 +14,29 @@
                 echo "Please require admin/auth/db_auth.php\n";
             }
         }
+        public function checkAvail($account)
+        {
+
+            try
+            {
+            $sql = "SELECT account FROM user WHERE account = :account";
+                $run = self::$myPDO->prepare($sql);
+                $run->execute(array(':account'=>$account));
+            }
+            catch(PDOException $e)
+            {
+                return false;
+            }
+            if($run->rowCount())
+            {
+                return False;
+            }
+            return true;
+        }
         public function BossRegister($account,$password,$phone,$email)
         {
             try
             {
-                $sql = "SELECT account FROM employer WHERE account = :account";
-                $run = self::$myPDO->prepare($sql);
-                $run->execute(array(':account'=>$account));
-                if($run->rowCount())
-                {
-                    echo "account exist";
-                    return False;
-                }
                 $sql = "INSERT INTO employer (account,password,phone,email) VALUES (:account,:password,:phone,:email)";
                 $run = self::$myPDO->prepare($sql);
                 $run->execute(array(':account'=>$account,
@@ -56,7 +67,7 @@
                                 ));
             } catch (PDOException $e)
             {
-                echo 'Register failed!' . $e->getMessage();
+                echo 'Post failed!' . $e->getMessage();
                 return False;
             }
             return True;
