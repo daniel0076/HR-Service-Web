@@ -52,7 +52,7 @@ session_start();
             <div class="visible content">New Post</div>
             <div class="hidden content"><i class="plus icon"></i></div>
           </div>
-          <div class="ui fullscreen modal">
+          <div class="ui fullscreen modal" id="post_modal">
             <i class="close icon"></i>
             <div class="header">New Post</div>
             <div class="content">
@@ -60,18 +60,18 @@ session_start();
               <div class="inline fields">
                 <div class="field">
                   <label>Location</label>
-                  <div class="ui search dropdown">
+                  <select class="ui search dropdown">
 <?php
 require('admin/auth/db_auth.php');
 require('admin/reg_boss.php');
 $db = new Boss();
 $res=$db->DropdownValue("location");
-if($res!="")
-{
-    
-}
+    foreach($res as $value)
+    {
+        echo "<option value='" . $value . "'>" . $value . "</option>";
+    }
 ?>
-                  </div>
+                  </select>
               </div>
               <div class="field">
                 <label>Occupation</label>
