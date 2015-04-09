@@ -16,7 +16,7 @@
     include 'template/register_modal.php';
 ?>
 <div class="container">
-<form class="ui form" id="bossform" name='bossform' onsubmit="<?php $reg->printScript();?>;return false;">
+<form class="ui form" id="bossform" name="bossform" onsubmit="<?php $reg->printScript();?>;return false;">
  <h4 class="ui dividing header">Employer</h4>
 <div class="ui blue attached fluid message" id="response"> </div>
     <div class="field">
