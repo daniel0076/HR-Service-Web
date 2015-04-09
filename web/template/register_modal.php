@@ -1,4 +1,4 @@
-<div class="ui modal">
+<div class="ui modal" id="register_modal">
     <i class="close icon"></i>
     <div class="header">Account Type</div>
     <div class="content">
