@@ -26,8 +26,6 @@
                 return $objRes;
             }
         }
-    }
-    print_r($form);
     $db = new Boss();
     $avail=$db->checkAvail($form['account']);
     if($avail)
@@ -62,4 +60,5 @@
     }
     $objRes->assign('response','innerHTML',$msg);
     return $objRes;
+    }
 ?>
