@@ -26,13 +26,19 @@ function postRecruit($form) {
     }
 
     $db = new Boss();
-        $res = $db->JobSeekerRegister($form['account'],$form['password'],$form['education'],$form['salary'],$form['phone'],$form['gender'],$form['age'],$form['email']);
+    $res = $db->PostJob($_SESSION['boss_id'],$form['occupation_id'],$form['location_id'],$form['working_time'],
+        $form['education'],$form['experience'],$form['salary']
+    );
 
-
-    if($error){
-        $objRes->call("accountExist");
+    if($res){
+        $error=false;
+        $msg='Success';
     }else{
-        $objRes->call("Succeeded");
+        $error=true;
+        $msg='資料庫錯誤，請稍後再試';
+    }
+
+    if(!$error){
         $objRes->redirect("index.php");
     }
 
