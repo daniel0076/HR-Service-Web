@@ -43,6 +43,7 @@ function regCheck($form) {
     }else{
         $error=true;
         $msg='帳號己經存在，請試試別的帳號';
+        $objRes->assign('error', 'innerHTML', $msg);
     }
 
     if($error){

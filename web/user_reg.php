@@ -8,8 +8,8 @@
 <?php
     include 'template/pre_css_js.php';
 ?>
-    <script type="text/javascript" src="js/register_button.js"></script>
-    <script type="text/javascript" src="js/user_reg_form.js"></script>
+    <script src="js/register_button.js"></script>
+    <script src="js/user_reg_form.js"></script>
     <link rel="stylesheet" href="css/register.css">
     <?php $xajax->printJavascript('static/'); ?>
     <title>User Register</title>
