@@ -4,7 +4,6 @@
         private static $myPDO=null;
         public function __construct()
         {
-            echo '!';
             if(isset($GLOBALS['db']))
             {
                 self::$myPDO = $GLOBALS['db'];
