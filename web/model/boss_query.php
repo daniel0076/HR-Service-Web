@@ -71,6 +71,26 @@
             return false;
 
         }
+        public function make_table_query()
+        {
+            try
+            {
+                $sql="SELECT recruit.*, location.location, occupation.occupation FROM recruit,location,occupation WHERE recruit.location_id=location.id and recruit.occupation_id=occupation.id ";
+                $run=self::$myPDO->prepare($sql);
+                $run->execute();
+                $res=$run->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $e)
+            {
+                echo 'Can\'t find ' . $attr . $e->getMessage();
+                return false;
+            }
+            if($res)
+            {
+                return $res;
+            }
+            return false;
+
+        }
         public function PostJob($boss_id,$occupation_id,$location_id,$working_time,$education,$experience,$salary)
         {
             try

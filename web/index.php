@@ -34,7 +34,7 @@ if(isset($_SESSION['is_boss']))
         <div class="menu">
         <div class="item">Lab1</div>
         </div>
-        </div>--!>
+        </div>-->
         <div class="right menu">
           <?php
              if(!isset($_SESSION['is_authed']))
@@ -50,6 +50,7 @@ if(isset($_SESSION['is_boss']))
     <div class="container">
       <div class="ui segment">
         <table class="ui striped table">
+        <h2 class="ui dividing header">最夯職缺，只差你一個</h2>
             <thead>
                 <th>ID</th>
                 <th>Occupation</th>
