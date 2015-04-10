@@ -48,6 +48,20 @@ if(isset($_SESSION['is_boss']))
       </div>
     <div class="container">
       <div class="ui segment">
+        <table class="ui striped table">
+            <thead>
+                <th>ID</th>
+                <th>Occupation</th>
+                <th>Location</th>
+                <th>Work Time</th>
+                <th>Education Required</th>
+                <th>Minimal Experience</th>
+                <th>Salary</th>
+                <th>Operation</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
           <!--display all post-->
          <?php
           if(isset($_SESSION['is_boss']))
