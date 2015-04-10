@@ -52,13 +52,13 @@ if(isset($_SESSION['is_boss']))
         <table class="ui striped table">
         <h2 class="ui dividing header">最夯職缺，只差你一個</h2>
             <thead>
-                <th>Occupation</th>
-                <th>Location</th>
-                <th>Work Time</th>
-                <th>Education Required</th>
-                <th>Minimal Experience</th>
-                <th>Salary</th>
-                <th>Operation</th>
+                <th><i class="crosshairs icon"></i>Occupation</th>
+                <th><i class="marker icon"></i>Location</th>
+                <th><i class="wait icon"></i>Work Time</th>
+                <th><i class="student icon"></i>Education Required</th>
+                <th><i class="theme icon"></i>Minimal Experience</th>
+                <th><i class="dollar icon"></i>Salary</th>
+                <th><i class="edit icon"></i>Operation</th>
             </thead>
             <tbody>
 <?php
@@ -123,9 +123,9 @@ if($res)
                 <label>Working Time</label>
                   <select class="ui dropdown selection" name="worktime">
                     <option value="">Working Time</option>
-                    <option value="day">Day Shift</option>
-                    <option value="night">Night Shift</option>
-                    <option value="graveyard">Graveyard Shift</option>
+                    <option value="DayShift">Day Shift</option>
+                    <option value="NightShift">Night Shift</option>
+                    <option value="GraveyardShift">Graveyard Shift</option>
                   </select>
               </div>
             </div>
@@ -134,11 +134,11 @@ if($res)
                 <label>Education</label>
                   <select class="ui dropdown selection" name="education">
                     <option value="">Education</option>
-                    <option value="graduate">Graduate School</option>
-                    <option value="undergraduate">Undergraduate School</option>
-                    <option value="seniorhigh">Senior High School</option>
-                    <option value="juniorhigh">Junior High School</option>
-                    <option value="elementary">Elementary School</option>
+                    <option value="GraduateSchool">Graduate School</option>
+                    <option value="UndergraduateSchool">Undergraduate School</option>
+                    <option value="SeniorHighSchool">Senior High School</option>
+                    <option value="JuniorHighSchool">Junior High School</option>
+                    <option data-value="ElementarySchool">Elementary School</option>
                   </select>
               </div>
               <div class="field">
