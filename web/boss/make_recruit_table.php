@@ -17,7 +17,6 @@ if($res)
             }
         }
         $row="<tr>";
-        $row.="<td>".$r['id']."</td>";
         $row.="<td>".$r['occupation']."</td>";
         $row.="<td>".$r['location']."</td>";
         $row.="<td>".$r['working_time']."</td>";

@@ -52,7 +52,6 @@ if(isset($_SESSION['is_boss']))
         <table class="ui striped table">
         <h2 class="ui dividing header">最夯職缺，只差你一個</h2>
             <thead>
-                <th>ID</th>
                 <th>Occupation</th>
                 <th>Location</th>
                 <th>Work Time</th>
