@@ -6,8 +6,10 @@ $(document).ready(function(){
                 return false;
             }
     }).modal('attach events','#post_button','show');
+
     $('#modal_msg').hide();
-});
-$(document).ready(function(){
+
+    $('.ui.small.modal').modal('attach events','#delPostButton','show');
+
     $('.dropdown').dropdown();
 });

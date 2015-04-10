@@ -17,7 +17,6 @@ if(isset($_SESSION['is_boss']))
 <?php if(!isset($_SESSION['is_authed'])){?>
 <script src="js/register_button.js"></script><?php }?>
     <script src="js/index.js"></script>
-
     <title>Just Sudo It</title>
     <link rel="shortcut icon" href="image/icon.png">
   </head>

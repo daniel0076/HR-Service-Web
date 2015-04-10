@@ -112,6 +112,21 @@
             return True;
 
         }
+        public function deletePost($recruit_id)
+        {
+            try
+            {
+                $sql="DELETE from recruit where id = :id";
+                $run=self::$myPDO->prepare($sql);
+                $run->bindParam(':id',$recruit_id);
+                $run->execute();
+            } catch(PDOException $e)
+            {
+                echo 'Delete failed' . $e->getMessage();
+                return false;
+            }
+            return true;
+        }
 #
 #        public function UpdateJob($occupation,$location,$working_time,$experience,$salary)
 #        {
