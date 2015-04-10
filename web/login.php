@@ -130,7 +130,9 @@ $(function() {
 
 <body>
 <div id="navbar">
-<?php require_once('template/menubar.php');?>
+<?php require_once('template/menubar.php');
+    require('template/register_modal.php');
+?>
 </div>
   <div class="content">
     <div class="container" id="login">
