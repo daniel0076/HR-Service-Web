@@ -1,7 +1,10 @@
 <?php
 session_start();
+if(isset($_SESSION['is_boss']))
+{
+    require_once('boss/post_recruit.php');
+}
 ?>
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,6 +16,7 @@ session_start();
 <?php if(!isset($_SESSION['is_authed'])){?>
 <script src="js/register_button.js"></script><?php }?>
     <script src="js/index.js"></script>
+
     <title>Just Sudo It</title>
     <link rel="shortcut icon" href="image/icon.png">
   </head>
@@ -47,7 +51,9 @@ session_start();
           <!--display all post-->
          <?php
           if(isset($_SESSION['is_boss']))
-          { ?>
+          {
+            $xajax->printJavascript('static/');
+        ?>
          <div class="ui section divider"></div>
           <div class="massive ui animated fade yellow button" id="post_button">
             <div class="visible content">New Post</div>
@@ -56,8 +62,9 @@ session_start();
           <div class="ui modal" id="post_modal">
             <i class="close icon"></i>
             <div class="header">New Post</div>
+            <div class="ui message" id="modal_msg"></div>
             <div class="content">
-            <form class="ui form">
+            <form class="ui form" name="recruitForm" id="recruitForm"  onsubmit="<?php $reg->printScript();?>;return false;">
               <div class="three fields">
                 <div class="field">
                   <label>Location</label>
@@ -139,12 +146,12 @@ if($res)
                   </select>
               </div>
             </div>
-          </form>
           </div>
           <div class="actions">
             <div class="ui red button">Cancel</div>
-            <div class="ui green button">Post</div>
+            <button type="submit" class="ui green submit button">Post</button>
           </div>
+          </form>
         </div>
         <?php }?>
       </div>

@@ -7,4 +7,10 @@
     width:50%;
     margin-left: 25%;
 }
-    
+#modal_msg{
+  width:40%;
+  margin:0 auto;
+  margin-top:1em;
+  text-align:center;
+}
+
