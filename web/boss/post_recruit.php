@@ -20,13 +20,13 @@ function postRecruit($form) {
         if(trim($x)==""){
             $msg="您有空白的欄位";
             $objRes->call("Error");
-            $objRes->assign('response', 'innerHTML', $msg);
+            $objRes->assign('modal_msg', 'innerHTML', $msg);
             return $objRes;
         }
     }
 
     $db = new Boss();
-    $res = $db->PostJob($_SESSION['boss_id'],$form['occupation_id'],$form['location_id'],$form['working_time'],
+    $res = $db->PostJob($_SESSION['boss_id'],$form['occupation_id'],$form['location_id'],$form['worktime'],
         $form['education'],$form['experience'],$form['salary']
     );
 
@@ -42,7 +42,7 @@ function postRecruit($form) {
         $objRes->redirect("index.php");
     }
 
-    $objRes->assign('response', 'innerHTML', $msg);
+    $objRes->assign('modal_msg', 'innerHTML', $msg);
 return $objRes;
 };
 
