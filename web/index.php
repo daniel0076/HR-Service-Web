@@ -60,7 +60,8 @@ session_start();
               <div class="three fields">
                 <div class="field">
                   <label>Location</label>
-                  <select class="ui search dropdown" name="location_id">
+                  <select class="ui dropdown selection" name="location_id">
+                    <option value="">Location</option>
 <?php
 require_once('admin/auth/db_auth.php');
 require_once('model/boss_query.php');
@@ -78,8 +79,8 @@ if($res)
               </div>
               <div class="field">
                 <label>Occupation</label>
-
-                  <select class="ui search dropdown" name="occupation_id">
+                  <select class="ui dropdown selection" name="occupation_id">
+                    <option value="">Occupation</option>
 <?php
 $res=$db->DropdownValue("occupation");
 if($res)
@@ -94,21 +95,47 @@ if($res)
               </div>
               <div class="field">
                 <label>Working Time</label>
-                <input type="text" name="worktime" placeholder="Working Time">
+                  <select class="ui dropdown selection" name="worktime">
+                    <option value="">Working Time</option>
+                    <option value="day">Day Shift</option>
+                    <option value="night">Night Shift</option>
+                    <option value="graveyard">Graveyard Shift</option>
+                  </select>
               </div>
             </div>
             <div class="three fields">
               <div class="field">
                 <label>Education</label>
-                <input type="text" name="education" placeholder="Education">
+                  <select class="ui dropdown selection" name="education">
+                    <option value="">Education</option>
+                    <option value="graduate">Graduate School</option>
+                    <option value="undergraduate">Undergraduate School</option>
+                    <option value="seniorhigh">Senior High School</option>
+                    <option value="juniorhigh">Junior High School</option>
+                    <option value="elementary">Elementary School</option>
+                  </select>
               </div>
               <div class="field">
                 <label>Experience</label>
-                <input type="text" name="experience" placeholder="Experience">
+                  <select class="ui dropdown selection" name="experience">
+                    <option value="">Experience</option>
+                    <option value="no">No experience required</option>
+                    <option value="1">1 year</option>
+                    <option value="2">2 years</option>
+                    <option value="3">3 years</option>
+                    <option value="4">4 years</option>
+                  </select>
               </div>
               <div class="field">
                 <label>Salary</label>
-                <input type="text" name="salary" placeholder="Salary">
+                  <select class="ui dropdown selection" name="salary">
+                    <option value="">Salary</option>
+                    <option value="22000">22000</option>
+                    <option value="30000">30000</option>
+                    <option value="40000">40000</option>
+                    <option value="50000">50000</option>
+                    <option value="70000">70000</option>
+                  </select>
               </div>
             </div>
           </form>
