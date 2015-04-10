@@ -3,4 +3,8 @@ $(document).ready(function(){
 });
 $(document).ready(function(){
     $('.dropdown').dropdown();
+    $('#modal_msg').hide();
 });
+function Error() {
+    $('#modal_msg').addClass("error").show();
+}
