@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('boss/make_recruit_table.php');
 if(isset($_SESSION['is_boss']))
 {
     require_once('boss/post_recruit.php');
@@ -33,7 +34,7 @@ if(isset($_SESSION['is_boss']))
         <div class="menu">
         <div class="item">Lab1</div>
         </div>
-        </div>-->
+        </div>--!>
         <div class="right menu">
           <?php
              if(!isset($_SESSION['is_authed']))
@@ -60,6 +61,9 @@ if(isset($_SESSION['is_boss']))
                 <th>Operation</th>
             </thead>
             <tbody>
+<?php
+make_recruit_table();
+?>
             </tbody>
         </table>
           <!--display all post-->
