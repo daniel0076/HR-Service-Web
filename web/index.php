@@ -148,8 +148,8 @@ if($res)
             </div>
           </div>
           <div class="actions">
-            <div class="ui red button">Cancel</div>
-            <button type="submit" class="ui green submit button">Post</button>
+            <div class="ui red button deny">Cancel</div>
+            <button type="submit" class="ui green submit button ok">Post</button>
           </div>
           </form>
         </div>
