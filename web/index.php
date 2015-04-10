@@ -16,7 +16,7 @@ session_start();
     <link rel="shortcut icon" href="image/icon.png">
   </head>
   <body>
-<?php include 'template/register_modal.php';?>
+<?php require_once('template/register_modal.php');?>
     <div></div>
     <div class="ui green inverted menu">
       <a class="item" href="index.php">
@@ -45,7 +45,7 @@ session_start();
       <div class="ui segment">
           <!--display all post-->
          <?php
-          if(!isset($_SESSION['is_boss']))
+          if(isset($_SESSION['is_boss']))
           { ?>
          <div class="ui section divider"></div>
           <div class="massive ui animated fade yellow button" id="post_button">
@@ -60,12 +60,10 @@ session_start();
               <div class="three fields">
                 <div class="field">
                   <label>Location</label>
-<?php
-require('admin/auth/db_auth.php');
-require('admin/reg_boss.php');
-?>
                   <select class="ui search dropdown" name="location_id">
 <?php
+require_once('admin/auth/db_auth.php');
+require_once('model/boss_query.php');
 $db = new Boss();
 $res=$db->DropdownValue("location");
 if($res)
