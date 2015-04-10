@@ -30,7 +30,7 @@
     $avail=$db->checkAvail($form['account']);
     if($avail)
     {
-        $res = $db->BossRegister($_POST['account'],$_POST['password'],$_POST['phone'],$_POST['email']);
+        $res = $db->BossRegister($form['account'],$form['password'],$form['phone'],$form['email']);
         if($res)
         {
 
