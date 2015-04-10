@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('boss/make_recruit_table.php');
 if(isset($_SESSION['is_boss']))
 {
     require_once('boss/post_recruit.php');
@@ -33,7 +34,7 @@ if(isset($_SESSION['is_boss']))
         <div class="menu">
         <div class="item">Lab1</div>
         </div>
-        </div>-->
+        </div>--!>
         <div class="right menu">
           <?php
              if(!isset($_SESSION['is_authed']))
@@ -48,6 +49,23 @@ if(isset($_SESSION['is_boss']))
       </div>
     <div class="container">
       <div class="ui segment">
+        <table class="ui striped table">
+            <thead>
+                <th>ID</th>
+                <th>Occupation</th>
+                <th>Location</th>
+                <th>Work Time</th>
+                <th>Education Required</th>
+                <th>Minimal Experience</th>
+                <th>Salary</th>
+                <th>Operation</th>
+            </thead>
+            <tbody>
+<?php
+make_recruit_table();
+?>
+            </tbody>
+        </table>
           <!--display all post-->
          <?php
           if(isset($_SESSION['is_boss']))
