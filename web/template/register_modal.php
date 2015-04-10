@@ -5,16 +5,14 @@
 <!--        <div class="ui small images" align="middle">
             <a href="boss_reg.php"><img src="image/boss.png" id="boss_img"></a>
             <div type="hidden"></div>-->
-    <div class="massive ui button" style="width:300px;height:300px;line-height:300px">
-    <div class="center">
-        Boss
-    </div>
-     <div class="ui vertical divider">or
-  </div>
-    </div>
-    <div class="massive ui button" style="width:300px;height:300px;line-height:300px">
-        JobSeeker
-    </div>
+    <a href="boss_reg.php"><div class="massive ui floating green left attached vertical animated button" id="choose" >
+        <div class="visible content" id="cnt">Boss</div>
+        <div class="hidden content" id="cnt1"><i class="plus icon"></i></div>
+    </div></a>
+    <a href="user_reg.php"><div class="massive ui floating green right attached vertical animated button" id="choose">
+        <div class="visible content" id="cnt">JobSeeker</div>
+        <div class="hidden content"  id="cnt1"><i class="plus icon"></i></div>
+    </div></a>
 <!--            <a href="user_reg.php"><img src="image/jobseeker.png" id="jobseeker_img"></a>
         </div>-->
     </div>

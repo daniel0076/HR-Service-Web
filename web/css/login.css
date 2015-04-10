@@ -1,8 +1,8 @@
-.content{
+#content{
   height: 350px;
   text-align: center;
 }
-.content:before {
+#content:before {
   content: "";
   height: 100%;
   display: inline-block;

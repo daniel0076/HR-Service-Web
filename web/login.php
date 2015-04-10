@@ -102,6 +102,7 @@ function login($form) {
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js?ver=2.0.3"></script>
     <link rel="stylesheet" type="text/css" href="static/semantic-ui/dist/semantic.css"/>
     <link rel="stylesheet" type="text/css" href="css/login.css"/>
+    <link rel="stylesheet" type="text/css" href="css/custom.css"/>
     <script type="text/javascript" src="static/semantic-ui/dist/semantic.js"></script>
     <script type="text/javascript" src="js/register_button.js"></script>
     <link rel="shortcut icon" href="image/icon.png">
@@ -134,7 +135,7 @@ $(function() {
     require('template/register_modal.php');
 ?>
 </div>
-  <div class="content">
+  <div class="content" id="content">
     <div class="container" id="login">
         <div class="ui large attached message"> 登入 </div>
         <div class="ui blue attached fluid message" id="response"> </div>
