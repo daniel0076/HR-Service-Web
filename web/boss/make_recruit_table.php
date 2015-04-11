@@ -19,12 +19,12 @@ if($res)
             }
         }
         $row="<tr>";
-        $row.="<td>".$r['occupation']."</td>";
-        $row.="<td>".$r['location']."</td>";
-        $row.="<td>".$r['working_time']."</td>";
-        $row.="<td>".$r['education']."</td>";
-        $row.="<td>".$r['experience']."&nbsp;&nbsp;&nbsp;year(s)</td>";
-        $row.="<td><i class='dollar icon'></i>".$r['salary']."</td>";
+        $row.="<td>".htmlspecialchars($r['occupation'])."</td>";
+        $row.="<td>".htmlspecialchars($r['location'])."</td>";
+        $row.="<td>".htmlspecialchars($r['working_time'])."</td>";
+        $row.="<td>".htmlspecialchars($r['education'])."</td>";
+        $row.="<td>".htmlspecialchars($r['experience'])."&nbsp;&nbsp;&nbsp;year(s)</td>";
+        $row.="<td><i class='dollar icon'></i>".htmlspecialchars($r['salary'])."</td>";
         $row.="<td>".$op."</td>";
         $row.="</tr>";
         echo ($row);
