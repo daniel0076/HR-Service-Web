@@ -23,7 +23,9 @@ if($res)
                 $op.="<input type='hidden' id='exp'  value='" .$r['experience']. "'>";
                 $op.="<input type='hidden' id='sal'  value='" .$r['salary']. "'>";
                 $op.="</form>";
-                $op.="<form action='boss/deletePost.php' method='POST' style='display:inline'><input type='hidden' name='p' value='".$r['id']."'><button class='ui red tiny button' id='delPostButton' type='submit'>刪除</button></form>";
+                $op.="<div class='ui red tiny button' id='delPostButton'>刪除</button>";
+                echo "<div class='ui basic test modal'><i class='close icon'></i><div class='header'>Delete the Post</div><form action='boss/deletePost.php' method='POST'><input type='hidden' name='p' value='".$r['id']."'><div class='actions' style='text-align:center'><div class='ui red button'>Cancel</div><button type='submit' class='ui green button'>Confirm</div></div></form></div>";
+
             }
         }
         $row="<tr>";
@@ -36,6 +38,7 @@ if($res)
         $row.="<td>".$op."</td>";
         $row.="</tr>";
         echo ($row);
+
 
     }
 }

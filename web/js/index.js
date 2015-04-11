@@ -6,14 +6,15 @@ $(document).ready(function(){
                 return false;
             }
     }).modal('attach events','#post_button','show');
-    $('#post_modal').modal('attach events','#editButton','show');
+    $('#post_modal').modal('attach events','.ui.blue.tiny.button','show');
 
-    $('#editButton').click(
+    $('.ui.blue.tiny.button').click(
         function(){
             $('#modal_header').html('Edit Post');
-            $('#re_loca').val($('#loca').value);
             $('#modal_edit').val($('#recruit_id').val());
-            
+            $('.dropdown').dropdown('clear');
+    $('.dropdown').dropdown('restore default text');
+
         }
     )
 
@@ -21,12 +22,14 @@ $(document).ready(function(){
         function(){
             $('#modal_header').html('New Post');
             $('#modal_edit').val(0);
+            $('.dropdown').dropdown('clear');
+    $('.dropdown').dropdown('restore default text');
         }
     )
 
     $('#modal_msg').hide();
 
-    $('.ui.small.modal').modal('attach events','#delPostButton','show');
+    $('.ui.basic.test.modal').modal('attach events','.ui.red.tiny.button','show');
 
-    $('.dropdown').dropdown();
+
 });
