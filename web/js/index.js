@@ -11,7 +11,6 @@ $(document).ready(function(){
     $('.ui.blue.tiny.button').click(
         function(){
             var rid=($(this).parent().children('#recruit_id').val());
-            alert(rid);
             $('#modal_rid').val(rid);
             $('#modal_header').html('Edit Post');
             $('#modal_edit').val($('#recruit_id').val());
