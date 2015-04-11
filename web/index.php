@@ -48,7 +48,6 @@ if(isset($_SESSION['is_boss']))
       </div>
     <div class="container">
       <div class="ui segment">
-        <div class="ui message" id="test_res"></div>
         <table class="ui striped table">
         <h2 class="ui dividing header">最夯職缺，只差你一個</h2>
             <thead>
