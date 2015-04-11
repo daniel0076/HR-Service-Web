@@ -145,15 +145,16 @@
             return true;
         }
 
-        public function UpdateJob($recruit_id,$occupation_id,$location_id,$working_time,$experience,$salary)
+        public function UpdateJob($recruit_id,$occupation_id,$location_id,$working_time,$education,$experience,$salary)
         {
             try
             {
-                $sql = "UPDATE recruit SET occupation = :occupation, location = :location, working_time = :working_time, experience = :experience, salary = :salary WHERE id = :id";
+                $sql = "UPDATE recruit SET occupation_id = :occupation_id, location_id = :location_id, working_time = :working_time, education = :education, experience = :experience, salary = :salary WHERE id = :id";
                 $run = self::$myPDO->prepare($sql);
-                $run->execute(array(':occupation'=>$occupation_id,
-                                    ':location'=>$location_id,
+                $run->execute(array(':occupation_id'=>$occupation_id,
+                                    ':location_id'=>$location_id,
                                     ':working_time'=>$working_time,
+                                    ':education'=>$education,
                                     ':experience'=>$experience,
                                     ':salary'=>$salary,
                                     ':id'=>$recruit_id));

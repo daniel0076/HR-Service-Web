@@ -11,7 +11,7 @@ $(document).ready(function(){
     $('#editButton').click(
         function(){
             $('#modal_header').html('Edit Post');
-            $('#modal_edit').val(1);
+            $('#modal_edit').val($('#recruit_id').val());
         }
     )
 
