@@ -28,8 +28,12 @@ function postRecruit($form) {
     $db = new Boss();
     if($form['edit'])
     {
-        $res = $db->UpdateJob($form['recruit_id'],$_SESSION['boss_id'],$form['occupation_id'],
-            $form['location_id'],$form['worktime'],$form['education'],$form['experience'],$form['salary']);
+        $permission=$db->checkPermission($form['recruit_id'],$_SESSION['boss_id']);
+        if($permission)
+        {
+            $res = $db->UpdateJob($form['recruit_id'],$form['occupation_id'], $form['location_id'],
+                $form['worktime'],$form['education'],$form['experience'],$form['salary']);
+        }else $res="false";
     }
     else
     {
