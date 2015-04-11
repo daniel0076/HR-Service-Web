@@ -1,4 +1,5 @@
 <?php
+echo 'zzz';
 session_start();
 if(!isset($_SESSION['is_boss']))
 {
@@ -8,8 +9,9 @@ require_once('../admin/auth/db_auth.php');
 require_once('../model/boss_query.php');
 if(isset($_POST['p']))
 {
+
     $db = new Boss();
-    if($db->checkPermission($_SESSION['boss_id']))
+    if($db->checkPermission($_POST['p'],$_SESSION['boss_id']))
     {
         $res=$db->deletePost($_POST['p']);
     }
