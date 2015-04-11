@@ -16,6 +16,12 @@ if($res)
             {
                 $op.="<form style='display:inline' id='editform'><div class='ui blue tiny button' id='editButton'>修改</div>";
                 $op.="<input type='hidden' id='recruit_id' name='recruit_id' value='" .$r['id']. "'>";
+                $op.="<input type='hidden' id='loca'  value='" .$r['location_id']. "'>";
+                $op.="<input type='hidden' id='occu'  value='" .$r['occupation_id']. "'>";
+                $op.="<input type='hidden' id='work'  value='" .$r['working_time']. "'>";
+                $op.="<input type='hidden' id='educa'  value='" .$r['education']. "'>";
+                $op.="<input type='hidden' id='exp'  value='" .$r['experience']. "'>";
+                $op.="<input type='hidden' id='sal'  value='" .$r['salary']. "'>";
                 $op.="</form>";
                 $op.="<form action='boss/deletePost.php' method='POST' style='display:inline'><input type='hidden' name='p' value='".$r['id']."'><button class='ui red tiny button' id='delPostButton' type='submit'>刪除</button></form>";
             }

@@ -86,7 +86,7 @@ make_recruit_table();
               <div class="three fields">
                 <div class="field">
                   <label>Location</label>
-                  <select class="ui dropdown selection" name="location_id" >
+                  <select class="ui dropdown selection" name="location_id" id='re_loca' value=''>
                     <option value="">Location</option>
 <?php
 require_once('admin/auth/db_auth.php');
@@ -106,7 +106,7 @@ if($res)
               <div class="field">
                 <label>Occupation</label>
                   <select class="ui dropdown selection" name="occupation_id">
-                    <option value="">Occupation</option>
+                    <option id='re_occu' value="">Occupation</option>
 <?php
 $res=$db->DropdownValue("occupation");
 if($res)
@@ -122,7 +122,7 @@ if($res)
               <div class="field">
                 <label>Working Time</label>
                   <select class="ui dropdown selection" name="worktime">
-                    <option value="">Working Time</option>
+                    <option id='re_work' value="">Working Time</option>
                     <option value="DayShift">Day Shift</option>
                     <option value="NightShift">Night Shift</option>
                     <option value="GraveyardShift">Graveyard Shift</option>
@@ -133,7 +133,7 @@ if($res)
               <div class="field">
                 <label>Education</label>
                   <select class="ui dropdown selection" name="education">
-                    <option value="">Education</option>
+                    <option id='re_educa' value="">Education</option>
                     <option value="GraduateSchool">Graduate School</option>
                     <option value="UndergraduateSchool">Undergraduate School</option>
                     <option value="SeniorHighSchool">Senior High School</option>
@@ -144,7 +144,7 @@ if($res)
               <div class="field">
                 <label>Experience</label>
                   <select class="ui dropdown selection" name="experience">
-                    <option value="">Experience</option>
+                    <option id='re_exp' value="">Experience</option>
                     <option value="no">No experience required</option>
                     <option value="1">1 year</option>
                     <option value="2">2 years</option>
@@ -155,7 +155,7 @@ if($res)
               <div class="field">
                 <label>Salary</label>
                   <select class="ui dropdown selection" name="salary">
-                    <option value="">Salary</option>
+                    <option id='re_sal' value="">Salary</option>
                     <option value="22000">22000</option>
                     <option value="30000">30000</option>
                     <option value="40000">40000</option>

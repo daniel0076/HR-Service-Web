@@ -119,13 +119,14 @@
                 $sql="SELECT id,employer_id FROM recruit where id = :id";
                 $run=self::$myPDO->prepare($sql);
                 $run->execute(array(':id'=>$id));
-                $res=$run->fetchAll(PDO::FETCH_ASSOC);
+
             }catch (PDOException $e)
             {
                 echo 'Can\'t check permission' . $e->getMessage();
                 return false;
             }
-            if($boss_id==$res['employer_id']){
+            $res=$run->fetchAll(PDO::FETCH_ASSOC);
+            if($boss_id==$res[0]['employer_id']){
                 return true;
             }
             return false;
