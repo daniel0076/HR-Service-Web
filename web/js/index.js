@@ -10,10 +10,11 @@ $(document).ready(function(){
 
     $('.ui.blue.tiny.button').click(
         function(){
+            var rid=($(this).parent().children('#recruit_id').val());
+            alert(rid);
+            $('#modal_rid').val(rid);
             $('#modal_header').html('Edit Post');
-            $('#modal_edit').val($('#recruit_id').val());
-            $('.dropdown').dropdown('clear');
-    $('.dropdown').dropdown('restore default text');
+            $('#modal_edit').val('1');
 
         }
     )
@@ -22,7 +23,6 @@ $(document).ready(function(){
         function(){
             $('#modal_header').html('New Post');
             $('#modal_edit').val(0);
-            $('.dropdown').dropdown('clear');
     $('.dropdown').dropdown('restore default text');
         }
     )

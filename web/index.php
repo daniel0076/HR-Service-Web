@@ -48,6 +48,7 @@ if(isset($_SESSION['is_boss']))
       </div>
     <div class="container">
       <div class="ui segment">
+        <div class="ui message" id="test_res"></div>
         <table class="ui striped table">
         <h2 class="ui dividing header">最夯職缺，只差你一個</h2>
             <thead>
@@ -83,6 +84,7 @@ make_recruit_table();
             <div class="content">
             <form class="ui form" name="recruitForm" id="recruitForm"  onsubmit="<?php $reg->printScript();?>;return false;">
             <input type="hidden" name="edit" id="modal_edit" value="0">
+            <input type="hidden" name="recruit_id" id="modal_rid" value="0">
               <div class="three fields">
                 <div class="field">
                   <label>Location</label>
