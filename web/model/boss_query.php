@@ -112,14 +112,31 @@
             return True;
 
         }
+        public function checkPermission($id,$boss_id)
+        {
+            try
+            {
+                $sql="SELECT id,employer_id FROM recruit where id = :id";
+                $run=self::$myPDO->prepare($sql);
+                $run->execute(array(':id'=>$id));
+                $res=$run->fetchAll(PDO::FETCH_ASSOC);
+            }catch (PDOException $e)
+            {
+                echo 'Can\'t check permission' . $e->getMessage();
+                return false;
+            }
+            if($boss_id==$res['employer_id']){
+                return true;
+            }
+            return false;
+        }
         public function deletePost($recruit_id)
         {
             try
             {
                 $sql="DELETE from recruit where id = :id";
                 $run=self::$myPDO->prepare($sql);
-                $run->bindParam(':id',$recruit_id);
-                $run->execute();
+                $run->execute(array(':id'=>$recruit_id));
             } catch(PDOException $e)
             {
                 echo 'Delete failed' . $e->getMessage();
@@ -127,22 +144,26 @@
             }
             return true;
         }
-#
-#        public function UpdateJob($occupation,$location,$working_time,$experience,$salary)
-#        {
-#        }
-#
-#        public function RemoveJob()
-#        {
-#        }
-#
-#
-#    }
-#    class jobseeker
-#    {
-#
-#        public function JobSeekerRegister($account,$password,$education,$expected_salary,$phone,$gender,$age,$email)
-#        {
-#        }
+
+        public function UpdateJob($recruit_id,$occupation_id,$location_id,$working_time,$experience,$salary)
+        {
+            try
+            {
+                $sql = "UPDATE recruit SET occupation = :occupation, location = :location, working_time = :working_time, experience = :experience, salary = :salary WHERE id = :id";
+                $run = self::$myPDO->prepare($sql);
+                $run->execute(array(':occupation'=>$occupation_id,
+                                    ':location'=>$location_id,
+                                    ':working_time'=>$working_time,
+                                    ':experience'=>$experience,
+                                    ':salary'=>$salary,
+                                    ':id'=>$recruit_id));
+            } catch(PDOException $e)
+            {
+                echo 'Update failed' . $e->getMessage();
+                return false;
+            }
+            return true;
+        }
+ 
     }
 ?>

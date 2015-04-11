@@ -9,7 +9,10 @@ require_once('../model/boss_query.php');
 if(isset($_POST['p']))
 {
     $db = new Boss();
-    $res=$db->deletePost($_POST['p']);
+    if($db->checkPermission($_SESSION['boss_id']))
+    {
+        $res=$db->deletePost($_POST['p']);
+    }
     header("Location: ../index.php");
 }
 ?>
