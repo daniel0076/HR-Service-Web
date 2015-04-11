@@ -1,13 +1,12 @@
-
 <a class="floating item">
 <?php 
 if(isset($_SESSION['is_boss']))
 {
-    echo "Hi!   ".$_SESSION['boss_name'];
+    echo "Hi!   ".htmlspecialchars($_SESSION['boss_name']);
 }
 else if(isset($_SESSION['is_user']))
 {
-    echo "Hi!   ".$_SESSION['user_name'];
+    echo "Hi!   ".htmlspecialchars($_SESSION['user_name']);
 }
 ?>
 </a>
