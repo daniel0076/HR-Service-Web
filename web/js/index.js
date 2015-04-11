@@ -4,6 +4,10 @@ $(document).ready(function(){
         onApprove :
             function(){
                 return false;
+            },
+        onDeny:
+            function(){
+                $('#modal_msg').html('');
             }
     }).modal('attach events','#post_button','show');
     $('#post_modal').modal('attach events','.ui.blue.tiny.button','show');
@@ -27,7 +31,6 @@ $(document).ready(function(){
         }
     )
 
-    $('#modal_msg').hide();
 
     $('.ui.red.tiny.button').click(
             function(){
