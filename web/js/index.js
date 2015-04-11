@@ -12,7 +12,6 @@ $(document).ready(function(){
         function(){
             $('#modal_header').html('Edit Post');
             $('#modal_edit').val($('#recruit_id').val());
-            $('.dropdown').dropdown('clear');
     $('.dropdown').dropdown('restore default text');
 
         }
@@ -28,7 +27,14 @@ $(document).ready(function(){
     )
 
     $('#modal_msg').hide();
-
+    
+    $('.ui.red.tiny.button').click(
+            function(){
+//                alert($(this).parent().children().val());
+                $('#p').val($(this).parent().children().val());
+//                alert($('#p').val());
+            }
+            )
     $('.ui.basic.test.modal').modal('attach events','.ui.red.tiny.button','show');
 
 

@@ -6,6 +6,7 @@ require_once('static/xajax_core/xajaxAIO.inc.php');
 $db = new Boss();
 $res=$db->make_table_query();
 
+echo "<div class='ui basic test modal'><i class='close icon'></i><div class='header'>Delete the Post</div><form action='boss/deletePost.php' method='POST'><input type='hidden' name='p' id='p' value=''><div class='actions' style='text-align:center'><div class='ui red button'>Cancel</div><button type='submit' class='ui green button'>Confirm</div></div></form></div>";
 if($res)
 {
     foreach($res as $r)
@@ -23,8 +24,8 @@ if($res)
                 $op.="<input type='hidden' id='exp'  value='" .$r['experience']. "'>";
                 $op.="<input type='hidden' id='sal'  value='" .$r['salary']. "'>";
                 $op.="</form>";
-                $op.="<div class='ui red tiny button' id='delPostButton'>刪除</button>";
-                echo "<div class='ui basic test modal'><i class='close icon'></i><div class='header'>Delete the Post</div><form action='boss/deletePost.php' method='POST'><input type='hidden' name='p' value='".$r['id']."'><div class='actions' style='text-align:center'><div class='ui red button'>Cancel</div><button type='submit' class='ui green button'>Confirm</div></div></form></div>";
+                $op.="<div style='display:inline'><input type='hidden' value='".$r['id']."'><div class='ui red tiny button' id='delPostButton'>刪除</div></div>";
+
 
             }
         }
