@@ -78,14 +78,15 @@ make_recruit_table();
           </div>
           <div class="ui modal" id="post_modal">
             <i class="close icon"></i>
-            <div class="header">New Post</div>
+            <div class="header" id="modal_header">New Post</div>
             <div class="ui message" id="modal_msg"></div>
             <div class="content">
             <form class="ui form" name="recruitForm" id="recruitForm"  onsubmit="<?php $reg->printScript();?>;return false;">
+            <input type="hidden" name="edit" id="modal_edit" value="0">
               <div class="three fields">
                 <div class="field">
                   <label>Location</label>
-                  <select class="ui dropdown selection" name="location_id">
+                  <select class="ui dropdown selection" name="location_id" >
                     <option value="">Location</option>
 <?php
 require_once('admin/auth/db_auth.php');

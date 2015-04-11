@@ -26,9 +26,16 @@ function postRecruit($form) {
     }
 
     $db = new Boss();
-    $res = $db->PostJob($_SESSION['boss_id'],$form['occupation_id'],$form['location_id'],$form['worktime'],
-        $form['education'],$form['experience'],$form['salary']
-    );
+    if($form['edit'])
+    {
+        $res = $db->UpdateJob($form['recruit_id'],$_SESSION['boss_id'],$form['occupation_id'],
+            $form['location_id'],$form['worktime'],$form['education'],$form['experience'],$form['salary']);
+    }
+    else
+    {
+        $res = $db->PostJob($_SESSION['boss_id'],$form['occupation_id'],$form['location_id'],
+            $form['worktime'],$form['education'],$form['experience'],$form['salary']);
+    }
 
     if($res){
         $error=false;
