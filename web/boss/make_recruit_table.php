@@ -14,8 +14,8 @@ if($res)
         if(isset($_SESSION['is_boss'])){
             if($r['employer_id']==$_SESSION['boss_id'])
             {
-                $op.="<div class='ui blue tiny button'>修改</div>";
-                $op.="<a href='boss/deletePost.php?p=".$r['id']."'><div class='ui red tiny button' id='delPostButton'>刪除</div></a>";
+                $op.="<form style='display:inline' id='editform'><div class='ui blue tiny button'>修改</div>";
+                $op.="<form action='boss/deletePost.php' method='POST' style='display:inline'><input type='hidden' name='p' value='".$r['id']."'><button class='ui red tiny button' id='delPostButton' type='submit'>刪除</button></form>";
             }
         }
         $row="<tr>";
