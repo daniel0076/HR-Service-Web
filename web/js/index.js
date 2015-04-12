@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $('.ui.dropdown').dropdown();
     $('#post_modal').modal({
         closable:false,
         onApprove :
@@ -12,22 +13,25 @@ $(document).ready(function(){
     }).modal('attach events','#post_button','show');
     $('#post_modal').modal('attach events','.ui.blue.tiny.button','show');
 
+
     $('.ui.blue.tiny.button').click(
         function(){
             var rid=($(this).parent().children('#recruit_id').val());
             $('#modal_rid').val(rid);
             $('#modal_header').html('Edit Post');
             $('#modal_edit').val($('#recruit_id').val());
-    $('.dropdown').dropdown();
-            $('#location_id').dropdown('set selected',$(this).parent().children('#loca').val());
-            $('#occupation_id').dropdown('set selected',$(this).parent().children('#occu').val());
-            $('#worktime').dropdown('set selected',$(this).parent().children('#work').val());
-            $('#education').dropdown('set selected',$(this).parent().children('#educa').val());
-            $('#experience').dropdown('set selected',$(this).parent().children('#exp').val());
-            $('#salary').dropdown('set selected',$(this).parent().children('#sal').val());
+            changeValue('#location_id',$(this).parent().children('#loca').val());
+            changeValue('#occupation_id',$(this).parent().children('#occu').val());
+            changeValue('#worktime',$(this).parent().children('#work').val());
+            changeValue('#education',$(this).parent().children('#educa').val());
+            changeValue('#experience',$(this).parent().children('#exp').val());
+            changeValue('#salary',$(this).parent().children('#sal').val());
 
         }
     )
+    function changeValue(dropdownID,value){
+            $('.ui.dropdown.selection').has(dropdownID).dropdown('set selected',value);
+    }
 
     $('#post_button').click(
         function(){
