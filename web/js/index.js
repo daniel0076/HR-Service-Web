@@ -19,12 +19,12 @@ $(document).ready(function(){
             $('#modal_header').html('Edit Post');
             $('#modal_edit').val($('#recruit_id').val());
     $('.dropdown').dropdown();
-            $('#location_id').dropdown('set selected',$(this).parent().children('#loca').val())
-            $('#occupation_id').dropdown('set selected',$(this).parent().children('#occu').val())
-            $('#worktime').dropdown('set selected',$(this).parent().children('#work').val())
-            $('#education').dropdown('set selected',$(this).parent().children('#educa').val())
-            $('#experience').dropdown('set selected',$(this).parent().children('#exp').val())
-            $('#salary').dropdown('set selected',$(this).parent().children('#sal').val())
+            $('#location_id').dropdown('set selected',$(this).parent().children('#loca').val());
+            $('#occupation_id').dropdown('set selected',$(this).parent().children('#occu').val());
+            $('#worktime').dropdown('set selected',$(this).parent().children('#work').val());
+            $('#education').dropdown('set selected',$(this).parent().children('#educa').val());
+            $('#experience').dropdown('set selected',$(this).parent().children('#exp').val());
+            $('#salary').dropdown('set selected',$(this).parent().children('#sal').val());
 
         }
     )
