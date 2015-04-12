@@ -22,8 +22,7 @@ if(isset($_SESSION['is_boss']))
   </head>
   <body>
 <?php require_once('template/register_modal.php');?>
-    <div></div>
-    <div class="ui green inverted menu">
+    <div class="ui green inverted menu" id="navbar">
       <a class="item" href="index.php">
         <i class="lightning icon"></i> Just Sudo It
       </a>
