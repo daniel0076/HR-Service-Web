@@ -86,7 +86,7 @@ make_recruit_table();
               <div class="three fields">
                 <div class="field">
                   <label>Location</label>
-                  <select class="ui dropdown selection" name="location_id" id='location_id'>
+                  <select class="ui dropdown selection" name="location_id" id="location_id">
                     <option value="">Location</option>
 <?php
 require_once('admin/auth/db_auth.php');
