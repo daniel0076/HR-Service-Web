@@ -1,5 +1,4 @@
-<div></div>
-<div class="ui green inverted menu">
+<div class="ui green inverted menu" id="navbar">
     <a class="item" href="index.php">
         <i class="lightning icon"></i> Just Sudo It
     </a>
