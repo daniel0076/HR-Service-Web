@@ -18,6 +18,7 @@ $(document).ready(function(){
             $('#modal_rid').val(rid);
             $('#modal_header').html('Edit Post');
             $('#modal_edit').val($('#recruit_id').val());
+    $('.dropdown').dropdown();
             $('#location_id').dropdown('set selected',$(this).parent().children('#loca').val())
             $('#occupation_id').dropdown('set selected',$(this).parent().children('#occu').val())
             $('#worktime').dropdown('set selected',$(this).parent().children('#work').val())
@@ -25,7 +26,6 @@ $(document).ready(function(){
             $('#experience').dropdown('set selected',$(this).parent().children('#exp').val())
             $('#salary').dropdown('set selected',$(this).parent().children('#sal').val())
 
-    $('.dropdown').dropdown('clear');
         }
     )
 
@@ -33,7 +33,6 @@ $(document).ready(function(){
         function(){
             $('#modal_header').html('New Post');
             $('#modal_edit').val(0);
-    $('.dropdown').dropdown('restore default text');
         }
     )
 
@@ -46,6 +45,11 @@ $(document).ready(function(){
             }
             )
     $('.ui.basic.test.modal').modal('attach events','.ui.red.tiny.button','show');
+    $('.ui.red.button.deny').click(function(){
 
+    })
+    $('.close.icon').click(function(){
+
+    })
 
 });
