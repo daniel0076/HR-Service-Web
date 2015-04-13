@@ -99,14 +99,14 @@ function login($form) {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>登入 | DB_LAB1 </title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js?ver=2.0.3"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="static/semantic-ui/dist/semantic.css"/>
     <link rel="stylesheet" type="text/css" href="css/login.css"/>
     <link rel="stylesheet" type="text/css" href="css/custom.css"/>
-    <script type="text/javascript" src="static/semantic-ui/dist/semantic.js"></script>
-    <script type="text/javascript" src="js/register_button.js"></script>
+    <script src="static/semantic-ui/dist/semantic.js"></script>
+    <script src="js/register_button.js"></script>
     <link rel="shortcut icon" href="image/icon.png">
-<script type="text/javascript">
+<script>
 /* <![CDATA[ */
 function loginAdminSucceeded() {
     $('#response').removeClass("blue").removeClass("error").addClass("positive").show();
