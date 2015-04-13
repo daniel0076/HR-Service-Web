@@ -137,7 +137,7 @@ if($res)
                     <option value="UndergraduateSchool">Undergraduate School</option>
                     <option value="SeniorHighSchool">Senior High School</option>
                     <option value="JuniorHighSchool">Junior High School</option>
-                    <option data-value="ElementarySchool">Elementary School</option>
+                    <option value="ElementarySchool">Elementary School</option>
                   </select>
               </div>
               <div class="field">
