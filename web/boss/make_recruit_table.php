@@ -44,4 +44,30 @@ function make_recruit_table () {
         }
     }
 }
+function make_user_table() {
+    require_once('admin/auth/db_auth.php');
+    require_once('model/boss_query.php');
+    require_once('static/xajax_core/xajaxAIO.inc.php');
+    $db = new Boss();
+    $res=$db->make_user_table_query();
+
+    if($res)
+    {
+        foreach($res as $r)
+        {
+            if(isset($_SESSION['is_boss'])){
+            $row="<tr>";
+            $row.="<td>".htmlspecialchars($r['user'])."</td>";
+            $row.="<td>".htmlspecialchars($r['education'])."</td>";
+            $row.="<td>".htmlspecialchars($r['expected_salary'])."</td>";
+            $row.="<td>".htmlspecialchars($r['phone'])."</td>";
+            $row.="<td>".htmlspecialchars($r['gender'])."</td>";
+            $row.="<td>".htmlspecialchars($r['age'])."</td>";
+            $row.="<td>".htmlspecialchars($r['email'])."</td>";
+            $row.="</tr>";
+            echo ($row);
+            }
+        }
+    }
+}
 ?>
