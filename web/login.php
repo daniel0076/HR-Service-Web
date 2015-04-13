@@ -108,6 +108,9 @@ function login($form) {
     <link rel="shortcut icon" href="image/icon.png">
 <script>
 /* <![CDATA[ */
+$(document).ready(function(){
+    $('#response').hide();
+});
 function loginAdminSucceeded() {
     $('#response').removeClass("blue").removeClass("error").addClass("positive").show();
 }
