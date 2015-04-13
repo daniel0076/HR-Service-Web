@@ -19,7 +19,7 @@ $(document).ready(function(){
             var rid=($(this).parent().children('#recruit_id').val());
             $('#modal_rid').val(rid);
             $('#modal_header').html('Edit Post');
-            $('#modal_edit').val($('#recruit_id').val());
+            $('#modal_edit').val(1);
             changeValue('#location_id',$(this).parent().children('#loca').val());
             changeValue('#occupation_id',$(this).parent().children('#occu').val());
             changeValue('#worktime',$(this).parent().children('#work').val());
@@ -37,15 +37,14 @@ $(document).ready(function(){
         function(){
             $('#modal_header').html('New Post');
             $('#modal_edit').val(0);
+            $('.ui.dropdown.selection').has('#locaion_id,#occupation_id,#worktime,#education,#experience,#salary').dropdown('restore default text');
         }
     )
 
 
     $('.ui.red.tiny.button').click(
             function(){
-//                alert($(this).parent().children().val());
                 $('#p').val($(this).parent().children().val());
-//                alert($('#p').val());
             }
             )
     $('.ui.basic.test.modal').modal('attach events','.ui.red.tiny.button','show');
