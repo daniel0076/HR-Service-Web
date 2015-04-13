@@ -57,9 +57,14 @@ $(document).ready(function() {
     <div class="container" id='fullpage'>
 <div class='section'>
     <div class='slide' data-anchor='slide1'>
-      <div class="ui segment">
-        <table class="ui striped table">
-        <h2 class="ui dividing header">最夯職缺，只差你一個</h2>
+      <div class="ui segment" style="width:90%;height:100%;overflow:scroll;">
+        <table class="ui striped table" >
+        <h2 class="ui header" style='text-align:center'>最夯職缺，只差你一個
+          <span style='float:right'><div class="normal ui animated fade black button" id="post_button">
+            <div class="visible content">New Post</div>
+            <div class="hidden content"><i class="plus icon"></i></div>
+          </div></span></h2>
+
             <thead>
                 <th><i class="crosshairs icon"></i>Occupation</th>
                 <th><i class="marker icon"></i>Location</th>
@@ -81,11 +86,7 @@ make_recruit_table();
           {
             $xajax->printJavascript('static/');
         ?>
-         <div class="ui section divider"></div>
-          <div class="massive ui animated fade yellow button" id="post_button">
-            <div class="visible content">New Post</div>
-            <div class="hidden content"><i class="plus icon"></i></div>
-          </div>
+
           <div class="ui modal" id="post_modal">
             <i class="close icon"></i>
             <div class="header" id="modal_header">New Post</div>
@@ -192,6 +193,12 @@ if(isset($_SESSION['is_boss']))
 <div class='slide' data-anchor='slide2'>
       <div class="ui segment">
         <table class="ui striped table">
+            <thead>
+                
+            </thead>
+<?php 
+    make_user_table();
+?>
         </table>
       </div>
 </div>

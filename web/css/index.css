@@ -4,9 +4,10 @@
     margin-right: auto
 }
 #post_button {
-    width:50%;
-    margin-left: 25%;
+    margin-right:3em;
+
 }
+    
 #modal_msg{
   width:60%;
   margin:0 auto;
