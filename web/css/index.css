@@ -13,4 +13,10 @@
   margin-top:1em;
   text-align:center;
 }
+.fp-controlArrow.fp-prev{
+  border-color:transparent #5BBD72 transparent transparent;
+}
+.fp-controlArrow.fp-next{
+  border-color:transparent transparent transparent #5BBD72;
+}
 
