@@ -76,7 +76,10 @@ $(document).ready(function() {
             </thead>
             <tbody>
 <?php
-make_recruit_table();
+require_once('admin/auth/db_auth.php');
+require_once('model/boss_query.php');
+$db = new Boss();
+make_recruit_table($db);
 ?>
             </tbody>
         </table>
@@ -100,9 +103,7 @@ make_recruit_table();
                   <select class="ui dropdown selection" name="location_id" id="location_id">
                     <option value="">Location</option>
 <?php
-require_once('admin/auth/db_auth.php');
-require_once('model/boss_query.php');
-$db = new Boss();
+
 $res=$db->DropdownValue("location");
 if($res)
 {
@@ -186,7 +187,7 @@ if($res)
         <?php }?>
       </div>
 </div>
-<?php 
+<?php
 if(isset($_SESSION['is_boss']))
 {
 ?>
@@ -194,10 +195,10 @@ if(isset($_SESSION['is_boss']))
       <div class="ui segment">
         <table class="ui striped table">
             <thead>
-                
+
             </thead>
-<?php 
-    make_user_table();
+<?php
+    make_user_table($db);
 ?>
         </table>
       </div>

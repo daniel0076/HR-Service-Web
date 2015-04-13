@@ -70,6 +70,7 @@
             return false;
 
         }
+
         public function make_user_table_query()
         {
             try
