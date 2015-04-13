@@ -142,15 +142,18 @@ $(function() {
         <form class="ui form attached fluid segment" name="loginForm" id="loginForm" onsubmit="$('#loginForm').form('validate form');<?php $login->printScript(); ?>;return false;">
             <div class="field">
                 <label>帳號</label>
-                <div class="ui left labeled icon input">
+                <div class="ui left icon corner labeled input">
                     <i class="user icon"></i>
+                    <div class="ui corner label"><i class="icon asterisk"></i></div>
+
                     <input name="user" type="text" autocomplete="off">
-                    <div class="ui corner label"> <i class="icon asterisk"></i> </div>
+
+
                 </div>
             </div>
             <div class="field">
                 <label>密碼</label>
-                <div class="ui left labeled icon input">
+                <div class="ui left icon corner labeled input">
                     <i class="lock icon"></i>
                     <input name="password" type="password">
                     <div class="ui corner label"> <i class="icon asterisk"></i> </div>
