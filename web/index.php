@@ -10,6 +10,10 @@ if(isset($_SESSION['is_boss']))
 <html>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="static/fullPage.js/vendors/jquery.slimscroll.min.js"></script>
+    <script src="static/fullPage.js/vendors/jquery.easings.min.js"></script>
+    <script src="static/fullPage.js/jquery.fullPage.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/fullPage.js/jquery.fullPage.css"/>
     <link rel="stylesheet" type="text/css" href="static/semantic-ui/dist/semantic.css"/>
     <link rel="stylesheet" type="text/css" href="css/custom.css"/>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
@@ -19,6 +23,11 @@ if(isset($_SESSION['is_boss']))
     <script src="js/index.js"></script>
     <title>Just Sudo It</title>
     <link rel="shortcut icon" href="image/icon.png">
+    <script type='text/javascript'>
+$(document).ready(function() {
+    $('#fullpage').fullpage();
+});
+</script>
   </head>
   <body>
 <?php require_once('template/register_modal.php');?>
@@ -45,7 +54,9 @@ if(isset($_SESSION['is_boss']))
              }?>
         </div>
       </div>
-    <div class="container">
+    <div class="container" id='fullpage'>
+<div class='section'>
+    <div class='slide' data-anchor='slide1'>
       <div class="ui segment">
         <table class="ui striped table">
         <h2 class="ui dividing header">最夯職缺，只差你一個</h2>
@@ -173,6 +184,19 @@ if($res)
         </div>
         <?php }?>
       </div>
+</div>
+<?php 
+if(isset($_SESSION['is_boss']))
+{
+?>
+<div class='slide' data-anchor='slide2'>
+      <div class="ui segment">
+        <table class="ui striped table">
+        </table>
+      </div>
+</div>
+<?php }?>
     </div>
+</div>
   </body>
 </html>
