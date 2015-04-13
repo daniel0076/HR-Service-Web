@@ -9,7 +9,7 @@ if(isset($_SESSION['is_boss']))
 <!DOCTYPE html>
 <html>
   <head>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js?ver=2.0.3"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="static/semantic-ui/dist/semantic.css"/>
     <link rel="stylesheet" type="text/css" href="css/custom.css"/>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
