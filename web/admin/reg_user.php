@@ -18,7 +18,15 @@ function regCheck($form) {
     $objRes = new xajaxResponse();
 
     foreach ($form as $x) {
-        if(trim($x)==""){
+        if(is_array($x)){
+            if(empty($x)){
+                $msg="您有空白的欄位";
+                $objRes->call("Error");
+                $objRes->assign('response', 'innerHTML', $msg);
+                return $objRes;
+            }
+        }
+        else if(trim($x)==""){
             $msg="您有空白的欄位";
             $objRes->call("Error");
             $objRes->assign('response', 'innerHTML', $msg);
@@ -28,9 +36,9 @@ function regCheck($form) {
 
     $db = new JobSeeker();
     $avail=$db->checkAvail($form['account']);
-
+    print_r($form);
     if($avail){
-        $res = $db->JobSeekerRegister($form['account'],$form['password'],$form['education'],$form['salary'],$form['phone'],$form['gender'],$form['age'],$form['email']);
+        $res = $db->JobSeekerRegister($form['account'],$form['password'],$form['education'],$form['salary'],$form['phone'],$form['gender'],$form['age'],$form['email'],$form['specialty']);
 
         if($res){
             $error=false;
