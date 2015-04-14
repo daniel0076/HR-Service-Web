@@ -57,6 +57,7 @@ function make_user_table($db) {
             $row.="<td>".htmlspecialchars($r['gender'])."</td>";
             $row.="<td>".htmlspecialchars($r['age'])."</td>";
             $row.="<td>".htmlspecialchars($r['email'])."</td>";
+            $row.="<td></td>";
             $row.="</tr>";
             echo ($row);
             }

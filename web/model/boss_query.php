@@ -75,8 +75,7 @@
             try
             {
                 $sql="SELECT * FROM user";
-                print_r($myPDO);
-                $run=self::$zz->prepare($sql);
+                $run=self::$myPDO->prepare($sql);
                 $run->execute();
                 $res=$run->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e)
