@@ -34,7 +34,7 @@
             try
             {
                 $sql_user = "INSERT INTO user (account,password,education,expected_salary,phone,gender,age,email) VALUES (:account,:password,:education,:expected_salary,:phone,:gender,:age,:email)";
-                $sql_specialty="INSERT INTO user_specialty (user,specialty_id) VALUES (:user,:specialty_id)";
+                $sql_specialty="INSERT INTO user_specialty (user_id,specialty_id) VALUES (:user_id,:specialty_id)";
                 $run = self::$myPDO->prepare($sql_user);
                 $is_success1=$run->execute(array(':account'=>$account,
                                     ':password'=>hash('sha256',$password),
@@ -44,11 +44,16 @@
                                     ':gender'=>$gender,
                                     ':age'=>$age,
                                     ':email'=>$email));
+                $sql = "SELECT id FROM user WHERE account = :account";
+                $getID = self::$myPDO->prepare($sql);
+                $getID->execute(array(':account'=>$account));
+                $ID=$getID->fetchAll(PDO::FETCH_ASSOC);
+                print_r($ID);
                 $is_success2=true;
                 foreach ($specialty as $x)
                 {
                     $run=self::$myPDO->prepare($sql_specialty);
-                    $success=$run->execute(array(':user'=>$account,
+                    $success=$run->execute(array(':user_id'=>$ID[0]['id'],
                                                  ':specialty_id'=>$x));
                     if(!$success)
                     {
@@ -62,20 +67,5 @@
             }
             return $is_success1 && $is_success2;
         }
-        public function make_specialty_table_query()
-        {
-            try
-            {
-                $sql = "SELECT * FROM specialty";
-                $run = self::$myPDO->prepare($sql);
-                $run->execute();
-                $res = $run->fetchAll(PDO::FETCH_ASSOC);
 
-            } catch (PDOException $e)
-            {
-                echo 'Query error' . $e->getMessage();
-                return false;
-            }
-            return $res;
-        }
     }

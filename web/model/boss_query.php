@@ -187,5 +187,37 @@
             return true;
         }
         
+        public function make_specialty_table_query()
+        {
+            try
+            {
+                $sql = "SELECT * FROM specialty";
+                $run = self::$myPDO->prepare($sql);
+                $run->execute();
+                $res = $run->fetchAll(PDO::FETCH_ASSOC);
+
+            } catch (PDOException $e)
+            {
+                echo 'Query error' . $e->getMessage();
+                return false;
+            }
+            return $res;
+        }
+        public function fetchUserSpecialty($id)
+        {
+
+            try
+            {
+                $sql = "SELECT user_specialty.*, specialty.specialty FROM user_specialty,specialty WHERE user_id = :id AND user_specialty.specialty_id = specialty.id";
+                $run = self::$myPDO->prepare($sql);
+                $run->execute(array(':id'=>$id));
+                $res = $run->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $e)
+            {
+                echo 'Query error' . $e->getMessage();
+                return false;
+            }
+            return $res;
+        }
     }
 ?>

@@ -1,4 +1,5 @@
 <?php
+require_once('model/user_query.php');
 function make_recruit_table ($db) {
     $res=$db->make_table_query();
 
@@ -43,12 +44,12 @@ function make_recruit_table ($db) {
 }
 function make_user_table($db) {
     $res=$db->make_user_table_query();
-
     if($res)
     {
         foreach($res as $r)
         {
             if(isset($_SESSION['is_boss'])){
+            $spec=$db->fetchUserSpecialty($r['id']);
             $row="<tr>";
             $row.="<td>".htmlspecialchars($r['account'])."</td>";
             $row.="<td>".htmlspecialchars($r['education'])."</td>";
@@ -57,7 +58,19 @@ function make_user_table($db) {
             $row.="<td>".htmlspecialchars($r['gender'])."</td>";
             $row.="<td>".htmlspecialchars($r['age'])."</td>";
             $row.="<td>".htmlspecialchars($r['email'])."</td>";
-            $row.="<td></td>";
+            $row.="<td><div class='ui icon top left pointing dropdown button'><i class='chevron circle down icon'></i><div class='menu'>";
+            if($spec)
+            {
+                foreach($spec as $sp)
+                {
+                    $row.="<div class='item'>".$sp['specialty']."</div>";
+                }
+            }
+            else
+            {
+                $row.="<div class='item'>Empty</div>";
+            }
+            $row.="</div></div></td>";
             $row.="</tr>";
             echo ($row);
             }
