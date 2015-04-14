@@ -36,7 +36,6 @@ function regCheck($form) {
 
     $db = new JobSeeker();
     $avail=$db->checkAvail($form['account']);
-    print_r($form);
     if($avail){
         $res = $db->JobSeekerRegister($form['account'],$form['password'],$form['education'],$form['salary'],$form['phone'],$form['gender'],$form['age'],$form['email'],$form['specialty']);
 
