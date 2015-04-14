@@ -62,4 +62,20 @@
             }
             return $is_success1 && $is_success2;
         }
+        public function make_specialty_table_query()
+        {
+            try
+            {
+                $sql = "SELECT * FROM specialty";
+                $run = self::$myPDO->prepare($sql);
+                $run->execute();
+                $res = $run->fetchAll(PDO::FETCH_ASSOC);
+
+            } catch (PDOException $e)
+            {
+                echo 'Query error' . $e->getMessage();
+                return false;
+            }
+            return $res;
+        }
     }

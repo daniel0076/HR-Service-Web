@@ -70,18 +70,18 @@
             return false;
 
         }
-
         public function make_user_table_query()
         {
             try
             {
                 $sql="SELECT * FROM user";
-                $run=self::$myPDO->prepare($sql);
+                print_r($myPDO);
+                $run=self::$zz->prepare($sql);
                 $run->execute();
                 $res=$run->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e)
             {
-                echo 'Can\'t find ' . $attr . $e->getMessage();
+                echo 'Can\'t find ' . $e->getMessage();
                 return false;
             }
             if($res)
@@ -187,6 +187,21 @@
             }
             return true;
         }
+        public function make_specialty_table_query()
+        {
+            try
+            {
+                $sql = "SELECT * FROM specialty";
+                $run = self::$myPDO->prepare($sql);
+                $run->execute();
+                $res = $run->fetchAll(PDO::FETCH_ASSOC);
 
+            } catch (PDOException $e)
+            {
+                echo 'Query error' . $e->getMessage();
+                return false;
+            }
+            return $res;
+        }
     }
 ?>

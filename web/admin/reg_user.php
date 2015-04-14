@@ -66,5 +66,13 @@ return $objRes;
 };
 
 
+function make_specialty_list($db){
+    $res=$db->make_specialty_table_query();
+    if($res){
+        foreach($res as $x){
+            echo "<div class='field'><div class='ui checkbox'><input type='checkbox' name='specialty[]' value='".$x['id']."' id='lab".$x['id']."'><label for='lab".$x['id']."'>".$x['specialty']."</label></div></div>";
 
+        }
+    }
+}
 ?>

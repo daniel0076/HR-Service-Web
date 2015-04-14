@@ -92,42 +92,10 @@
         <div class='inline fields'>
             <label>Specialties</label>
             <br>
-            <div class='field'>
-                <div class='ui checkbox'>
-                    <input type='checkbox' name='specialty[]' value='sleep' id='sleep'>
-                    <label for='sleep'>Sleep</label>
-                </div>
-            </div>
-            <div class='field'>
-                <div class='ui checkbox'>
-                    <input type='checkbox' name='specialty[]' value='2' id='eat'>
-                    <label for='eat'>Eat</label>
-                </div>
-            </div>
-            <div class='field'>
-                <div class='ui checkbox'>
-                    <input type='checkbox' name='specialty[]' value='3' id='kiss'>
-                    <label for='kiss'>Kiss</label>
-                </div>
-            </div>
-            <div class='field'>
-                <div class='ui checkbox'>
-                    <input type='checkbox' name='specialty[]' value='4' id='blink'>
-                    <label for='blink'>Blink</label>
-                </div>
-            </div>
-            <div class='field'>
-                <div class='ui checkbox'>
-                    <input type='checkbox' name='specialty[]' value='5' id='break'>
-                    <label for='break'>Break the cups</label>
-                </div>
-            </div>
-            <div class='field'>
-                <div class='ui checkbox'>
-                    <input type='checkbox' name='specialty[]' value='6' id='bully'>
-                    <label for='bully'>Bully the boss</label>
-                </div>
-            </div>
+<?php
+    $db=new JobSeeker();
+    make_specialty_list($db);
+?>
         </div>
         <div class="ui submit button" type="submit">Submit</div>
     </form>
