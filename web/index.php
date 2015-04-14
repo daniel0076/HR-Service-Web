@@ -60,10 +60,13 @@ $(document).ready(function() {
       <div class="ui segment" style="width:90%;height:100%;overflow:scroll;">
         <table class="ui striped table" >
         <h2 class="ui header" style='text-align:center'>最夯職缺，只差你一個
+        <?php if(isset($_SESSION['is_boss']))
+                 { ?>
           <span style='float:right'><div class="normal ui animated fade black button" id="post_button">
             <div class="visible content">New Post</div>
-            <div class="hidden content"><i class="plus icon"></i></div>
-          </div></span></h2>
+            <div class="hidden content" style='text-align:center'><i class="plus icon"></i></div>
+            </div></span> <?php }?>
+        </h2>
 
             <thead>
                 <th><i class="crosshairs icon"></i>Occupation</th>
@@ -83,6 +86,7 @@ make_recruit_table($db);
 ?>
             </tbody>
         </table>
+        <div></div>
           <!--display all post-->
          <?php
           if(isset($_SESSION['is_boss']))
@@ -103,15 +107,7 @@ make_recruit_table($db);
                   <select class="ui dropdown selection" name="location_id" id="location_id">
                     <option value="">Location</option>
 <?php
-
-$res=$db->DropdownValue("location");
-if($res)
-{
-    foreach($res as $value)
-    {
-        echo "<option value='" . $value['id'] . "'>" . $value['location'] . "</option>";
-    }
-}
+    make_location_dropdown($db);
 ?>
                   </select>
               </div>
@@ -120,14 +116,7 @@ if($res)
                   <select class="ui dropdown selection" name="occupation_id" id='occupation_id'>
                     <option value="">Occupation</option>
 <?php
-$res=$db->DropdownValue("occupation");
-if($res)
-{
-    foreach($res as $value)
-    {
-        echo "<option value='" . $value['id'] . "'>" . $value['occupation'] . "</option>";
-    }
-}
+    make_occupation_dropdown($db);
 ?>
                 </select>
               </div>
@@ -192,10 +181,18 @@ if(isset($_SESSION['is_boss']))
 {
 ?>
 <div class='slide' data-anchor='slide2'>
-      <div class="ui segment">
+      <div class="ui segment" style="width:90%;height:100%;overflow:scroll;">
+        <div class='ui header'>所有好人才，都從這裡找</div>
         <table class="ui striped table">
             <thead>
-
+                <th><i class='user icon'></i>Name</th>
+                <th><i class='student icon'</i>Education</th>
+                <th><i class='dollar icon'></i>Expected Salary</th>
+                <th><i class='call icon'></i>Phone</th>
+                <th><i class='heart icon'></i>Gender</th>
+                <th><i class='birthday icon'></i>Age</th>
+                <th><i class='mail icon'></i>Email</th>
+                <th><i class='lab icon'></i>Specialtys</th>
             </thead>
 <?php
     make_user_table($db);

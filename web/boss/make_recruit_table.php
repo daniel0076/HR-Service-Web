@@ -63,4 +63,25 @@ function make_user_table($db) {
         }
     }
 }
+function make_occupation_dropdown($db){
+    $res=$db->DropdownValue("occupation");
+    if($res)
+    {
+        foreach($res as $value)
+        {
+            echo "<option value='" . $value['id'] . "'>" . $value['occupation'] . "</option>";
+        }
+    }
+}
+function make_location_dropdown($db){
+    $res=$db->DropdownValue("location");
+    if($res)
+    {
+        foreach($res as $value)
+        {
+            echo "<option value='" . $value['id'] . "'>" . $value['location'] . "</option>";
+        }
+    }
+
+}
 ?>
