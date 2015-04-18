@@ -58,7 +58,7 @@ function make_user_table($db) {
             $row.="<td>".htmlspecialchars($r['gender'])."</td>";
             $row.="<td>".htmlspecialchars($r['age'])."</td>";
             $row.="<td>".htmlspecialchars($r['email'])."</td>";
-            $row.="<td><div class='ui icon top left pointing dropdown button'><i class='chevron circle down icon'></i><div class='menu'>";
+            $row.="<td><div class='ui icon top left pointing fluid dropdown button' style='text-align:center'><i class='chevron circle down icon'></i><div class='menu'>";
             if($spec)
             {
                 foreach($spec as $sp)

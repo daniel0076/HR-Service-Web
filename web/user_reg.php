@@ -42,11 +42,11 @@
             <i class="dropdown icon"></i>
             <input type="hidden" name="education">
                 <div class="menu">
-                    <div class="item" data-value="graduate">Graduate School</div>
-                    <div class="item" data-value="undergraduate">Undergraduate School</div>
-                    <div class="item" data-value="senior">Senior High School</div>
-                    <div class="item" data-value="junior">Junior School</div>
-                    <div class="item" data-value="elementary">Elementary School</div>
+                    <div class="item" data-value="GraduateSchool">Graduate School</div>
+                    <div class="item" data-value="UndergraduateSchool">Undergraduate School</div>
+                    <div class="item" data-value="SeniorHighSchool">Senior High School</div>
+                    <div class="item" data-value="JuniorHighSchool">Junior School</div>
+                    <div class="item" data-value="ElementarySchool">Elementary School</div>
                 </div>
             </div>
         </div>
@@ -58,10 +58,10 @@
             <input type="hidden" name="salary">
                 <div class="menu">
                     <div class="item" data-value="22000">22000</div>
+                    <div class="item" data-value="30000">30000</div>
                     <div class="item" data-value="40000">40000</div>
-                    <div class="item" data-value="60000">60000</div>
-                    <div class="item" data-value="80000">80000</div>
-                    <div class="item" data-value="100000">100000</div>
+                    <div class="item" data-value="50000">50000</div>
+                    <div class="item" data-value="70000">70000</div>
                 </div>
             </div>
         </div>
