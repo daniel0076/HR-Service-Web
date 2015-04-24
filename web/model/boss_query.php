@@ -186,7 +186,6 @@
             }
             return true;
         }
-        
         public function make_specialty_table_query()
         {
             try
