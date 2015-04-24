@@ -80,7 +80,6 @@
                 $getID = self::$myPDO->prepare($sql);
                 $getID->execute(array(':account'=>$account));
                 $ID=$getID->fetchAll(PDO::FETCH_ASSOC);
-                print_r($ID);
                 $is_success2=true;
                 foreach ($specialty as $x)
                 {
