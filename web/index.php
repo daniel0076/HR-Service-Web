@@ -57,7 +57,7 @@ $(document).ready(function() {
     <div class="container" id='fullpage'>
 <div class='section'>
     <div class='slide' data-anchor='slide1'>
-      <div class="ui segment" style="width:90%;height:100%;overflow:scroll;">
+      <div class="ui segment" style="width:90%;height:100%;overflow:auto;">
         <table class="ui striped table" >
         <h2 class="ui header" style='text-align:center'>最夯職缺，只差你一個
         <?php if(isset($_SESSION['is_boss']))
@@ -180,10 +180,10 @@ make_recruit_table($db);
 if(isset($_SESSION['is_boss']))
 {
 ?>
-<div class='slide' data-anchor='slide2'>
-      <div class="ui segment" style="width:90%;height:100%;overflow:scroll;">
+<div class='slide' data-anchor='slide2' style="margin-down:100px">
+      <div class="ui segment" style="width:90%;height:100%;overflow:scroll;margin-down:100px">
         <div class='ui header'>所有好人才，都從這裡找</div>
-        <table class="ui striped table">
+        <table class="ui striped table" style="height:110%;margin-down:100px">
             <thead>
                 <th><i class='user icon'></i>Name</th>
                 <th><i class='student icon'</i>Education</th>
