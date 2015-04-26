@@ -57,8 +57,8 @@ $(document).ready(function() {
     <div class="container" id='fullpage'>
 <div class='section'>
     <div class='slide' data-anchor='slide1'>
-      <div class="ui segment" style="width:90%;height:100%;overflow:scroll;">
-        <table class="ui striped table" >
+      <div class="ui segment" style="width:90%;height:100%;overflow-y:scroll;">
+        <table class="ui striped table" style='margin-bottom:100px'>
         <h2 class="ui header" style='text-align:center'>最夯職缺，只差你一個
         <?php if(isset($_SESSION['is_boss']))
                  { ?>
@@ -181,9 +181,10 @@ if(isset($_SESSION['is_boss']))
 {
 ?>
 <div class='slide' data-anchor='slide2'>
-      <div class="ui segment" style="width:90%;height:100%;overflow:scroll;">
+      <div class="ui segment" style="width:90%;height:100%;overflow-y:scroll;">
+        <div></div>
         <div class='ui header'>所有好人才，都從這裡找</div>
-        <table class="ui striped table">
+        <table class="ui striped table" style='margin-bottom:200px'>
             <thead>
                 <th><i class='user icon'></i>Name</th>
                 <th><i class='student icon'</i>Education</th>
@@ -197,7 +198,9 @@ if(isset($_SESSION['is_boss']))
 <?php
     make_user_table($db);
 ?>
+
         </table>
+
       </div>
 </div>
 <?php }?>
