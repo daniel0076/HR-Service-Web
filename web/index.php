@@ -32,7 +32,7 @@ $(document).ready(function() {
   <body>
 <?php require_once('template/register_modal.php');?>
     <div class="ui green inverted menu" id="navbar">
-      <a class="item" href="index.php">
+      <a class="item" id='mainpage' href="#">
         <i class="lightning icon"></i> Just Sudo It
       </a>
       <!--    <div class="ui pointing dropdown link item">
@@ -42,6 +42,22 @@ $(document).ready(function() {
         <div class="item">Lab1</div>
         </div>
         </div>-->
+        <?php
+        if(isset($_SESSION['is_boss']))
+        {?>
+        <a class='item' id='moveSlideLeft' href='#'>
+            <i class='angle double left  icon'></i>Application List
+        </a>
+        <a class='item' id='moveSlideRight' href='#'>
+            <i class='angle double right icon'></i>Job Seeker List
+        </a>
+        <?php }
+        if(isset($_SESSION['is_user']))
+        {?>
+        <a class='item' id='moveSlideRight' href='#'>
+            <i class='angle double right icon'></i>Favorite List
+        </a>
+        <?php }?>
         <div class="right menu">
           <?php
              if(!isset($_SESSION['is_authed']))
@@ -203,7 +219,16 @@ if(isset($_SESSION['is_boss']))
 
       </div>
 </div>
-<?php }?>
+<div class='slide' data-anchor='slide3'>
+</div>
+<?php }
+if(isset($_SESSION['is_user']))
+{?>
+<div class='slide' data-anchor='slide2'>
+</div>
+<?php
+}
+?>
     </div>
 </div>
   </body>
