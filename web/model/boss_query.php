@@ -90,11 +90,18 @@
             return false;
 
         }
-        public function make_table_query()
+        public function make_table_query($order=null)
         {
+            if ($order=="DESC"){
+                $sql="SELECT recruit.*, location.location, occupation.occupation FROM recruit,location,occupation WHERE recruit.location_id=location.id and recruit.occupation_id=occupation.id ORDER BY `salary` DESC, `id` ASC ";
+            }
+            else if($order=="ASC"){
+                $sql="SELECT recruit.*, location.location, occupation.occupation FROM recruit,location,occupation WHERE recruit.location_id=location.id and recruit.occupation_id=occupation.id ORDER BY `salary` ASC,`id` ASC ";
+            }else{
+                $sql="SELECT recruit.*, location.location, occupation.occupation FROM recruit,location,occupation WHERE recruit.location_id=location.id and recruit.occupation_id=occupation.id ORDER BY `id` ASC";
+            }
             try
             {
-                $sql="SELECT recruit.*, location.location, occupation.occupation FROM recruit,location,occupation WHERE recruit.location_id=location.id and recruit.occupation_id=occupation.id ";
                 $run=self::$myPDO->prepare($sql);
                 $run->execute();
                 $res=$run->fetchAll(PDO::FETCH_ASSOC);

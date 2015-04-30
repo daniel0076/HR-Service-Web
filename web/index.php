@@ -91,8 +91,8 @@ $(document).ready(function() {
                 <th><i class="student icon"></i>Education Required</th>
                 <th><i class="theme icon"></i>Minimal Experience</th>
                 <th><i class="dollar icon"></i>Salary
-                    <i class="caret up icon"></i>
-                    <i class="caret down icon"></i>
+                    <i class="medium caret up icon" id="salarySortASC"></i>
+                    <i class="medium caret down icon" id="salarySortDESC"></i>
                 </th>
                 <th><i class="edit icon"></i>Operation</th>
             </thead>
