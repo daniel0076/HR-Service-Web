@@ -72,7 +72,7 @@ $(document).ready(function() {
       </div>
     <div class="container" id='fullpage'>
 <div class='section'>
-    <div class='slide' data-anchor='slide1'>
+    <div class='slide' data-anchor='slide1' id="slideIndex">
       <div class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
         <table class="ui striped table" style='margin-bottom:100px'>
         <h2 class="ui header" style='text-align:center'>最夯職缺，只差你一個
@@ -90,7 +90,10 @@ $(document).ready(function() {
                 <th><i class="wait icon"></i>Work Time</th>
                 <th><i class="student icon"></i>Education Required</th>
                 <th><i class="theme icon"></i>Minimal Experience</th>
-                <th><i class="dollar icon"></i>Salary</th>
+                <th><i class="dollar icon"></i>Salary
+                    <i class="caret up icon"></i>
+                    <i class="caret down icon"></i>
+                </th>
                 <th><i class="edit icon"></i>Operation</th>
             </thead>
             <tbody>
@@ -196,7 +199,7 @@ make_recruit_table($db);
 if(isset($_SESSION['is_boss']))
 {
 ?>
-<div class='slide' data-anchor='slide2'>
+<div class='slide' data-anchor='slide2' id="slideJobseeker">
       <div class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
         <div></div>
         <div class='ui header'>所有好人才，都從這裡找</div>
@@ -219,7 +222,7 @@ if(isset($_SESSION['is_boss']))
 
       </div>
 </div>
-<div class='slide' data-anchor='slide3'>
+<div class='slide' data-anchor='slide3' id="slideAppli">
 </div>
 <?php }
 if(isset($_SESSION['is_user']))

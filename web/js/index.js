@@ -56,11 +56,28 @@ $(document).ready(function(){
     })
     $('#moveSlideRight').click(function(){
         $.fn.fullpage.moveTo(0,1);
+        setActive();
     })
     $('#moveSlideLeft').click(function(){
         $.fn.fullpage.moveTo(0,2);
+        setActive();
     })
     $('#mainpage').click(function(){
         $.fn.fullpage.moveTo(0,0);
+        setActive();
+    })
+    $('div.fp-controlArrow').click(function(){
+        setActive();
     })
 });
+function setActive() {
+    if ($('#slideIndex').hasClass("active")) {
+        $('#moveSlideRight,#moveSlideLeft').removeClass("active");
+    }else if ($('#slideJobseeker').hasClass("active")) {
+        $('#moveSlideLeft').removeClass("active");
+        $('#moveSlideRight').addClass("active");
+    }else if ($('#slideAppli').hasClass("active")) {
+        $('#moveSlideRight').removeClass("active");
+        $('#moveSlideLeft').addClass("active");
+    }
+};
