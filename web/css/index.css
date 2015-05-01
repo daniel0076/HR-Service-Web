@@ -16,7 +16,9 @@
 }
 .fp-controlArrow.fp-prev{
   border-color:transparent #5BBD72 transparent transparent;
+  visibility:hidden;
 }
 .fp-controlArrow.fp-next{
   border-color:transparent transparent transparent #5BBD72;
+  visibility:hidden;
 }
