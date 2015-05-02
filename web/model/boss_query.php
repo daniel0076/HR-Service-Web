@@ -80,7 +80,7 @@
                 $res=$run->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e)
             {
-                echo 'Can\'t find ' . $e->getMessage();
+                echo "<script>alert($e->getMessage());</script>";
                 return false;
             }
             if($res)

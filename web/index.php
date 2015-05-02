@@ -11,6 +11,8 @@ if(isset($_SESSION['is_boss']))
 <html>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-sanitize.js"></script>
     <script src="static/fullPage.js/vendors/jquery.slimscroll.min.js"></script>
     <script src="static/fullPage.js/vendors/jquery.easings.min.js"></script>
     <script src="static/fullPage.js/jquery.fullPage.min.js"></script>
@@ -109,9 +111,20 @@ $(document).ready(function() {
             <button class='ui button' type='submit' id='searching'>Search</button>
         </div>
     </form>
+         <script>
+                 var sortApp=angular.module('sort', ['ngSanitize']);
+                 sortApp.controller('sortController',function($scope, $window,$http,$sce) {
+                 $scope.sortBy= function(sort) {
+                     $http.get("api/make_recruit_table.php?sort="+sort).success(
+                         function(response){
+                             $scope.table= $sce.trustAsHtml(response);
+                         }
+                     )
+                 }
+             });
+        </script>
+        <div ng-app="sort" ng-controller="sortController">
         <table class="ui striped table" style='margin-bottom:100px' id='recruit_table'>
-
-
             <thead>
                 <th><i class="crosshairs icon"></i>Occupation</th>
                 <th><i class="marker icon"></i>Location</th>
@@ -119,26 +132,28 @@ $(document).ready(function() {
                 <th><i class="student icon"></i>Education Required</th>
                 <th><i class="theme icon"></i>Minimal Experience</th>
                 <th><i class="dollar icon"></i>Salary
-                    <div class="ui icon mini button" id="salarySortASC">
-                        <i class="caret up icon" ></i>
-                    </div>
-                    <div class="ui icon mini button" id="salarySortDESC">
-                        <i class="caret down icon"></i>
-                    </div>
+
+                        <div class="ui icon mini button" ng-click="sortBy('desc')">
+                            <i class="caret down icon"></i>
+                        </div>
+                        <div class="ui icon mini button" ng-click="sortBy('asc')">
+                            <i class="caret up icon"></i>
+                        </div>
                 </th>
                 <th><i class="edit icon"></i>Operation</th>
             </thead>
-            <tbody id="recruitTable">
+            <tbody id="recruitTable" ng-bind-html="table">
+            </tbody>
+        </table>
+</div>
 <?php
+
 require_once('admin/auth/db_auth.php');
 require_once('model/boss_query.php');
 
 $db = new Boss();
-make_recruit_table($db);
+//make_recruit_table($db);
 ?>
-            </tbody>
-
-        </table>
         <div></div>
           <!--display all post-->
          <?php
@@ -149,6 +164,15 @@ make_recruit_table($db);
             $xajax->printJavascript('static/');
         ?>
 
+        <div class='ui basic test modal' id="del_modal">
+        <i class='close icon'></i>
+        <div class='header'>Delete the Post</div>
+            <form action='boss/deletePost.php' method='POST'>
+                <input type='hidden' name='p' id='p' value=''>
+                <div class='ui red button' id="cancelDel" >Cancel</div>
+                <button type='submit' class='ui green button'>Confirm</button>
+            </form>
+        </div>
 
           <div class="ui modal" id="post_modal">
             <i class="close icon"></i>

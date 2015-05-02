@@ -13,7 +13,6 @@ function make_recruit_table ($db,$sort) {
     $res=$db->make_table_query($sort);
 
 
-    echo "<div class='ui basic test modal' id='del_modal'><i class='close icon'></i><div class='header'>Delete the Post</div><form action='boss/deletePost.php' method='POST'><input type='hidden' name='p' id='p' value=''><div class='actions' style='text-align:center'><div class='ui red button'>Cancel</div><button type='submit' class='ui green button'>Confirm</button></div></form></div>";
     if($res)
     {
         foreach($res as $r)
@@ -22,7 +21,8 @@ function make_recruit_table ($db,$sort) {
             if(isset($_SESSION['is_boss'])){
                 if($r['employer_id']==$_SESSION['boss_id'])
                 {
-                    $op.="<form style='display:inline' id='editform'><div class='ui blue tiny button' id='editButton'>修改</div>";
+                    $op.="<form style='display:inline' id='editform'>";
+                    $op.="<div class='ui blue tiny button' id='editButton'>修改</div>";
                     $op.="<input type='hidden' id='recruit_id' name='recruit_id' value='" .$r['id']. "'>";
                     $op.="<input type='hidden' id='recruit_id' name='recruit_id' value='" .$r['id']. "'>";
                     $op.="<input type='hidden' id='loca'  value='" .$r['location_id']. "'>";
@@ -33,7 +33,8 @@ function make_recruit_table ($db,$sort) {
                     $op.="<input type='hidden' id='sal'  value='" .$r['salary']. "'>";
 
                     $op.="</form>";
-                    $op.="<div style='display:inline'><input type='hidden' value='".$r['id']."'><div class='ui red tiny button' id='delPostButton'>刪除</div></div>";
+                    $op.="<div style='display:inline'><input type='hidden' value='".$r['id']."'>";
+                    $op.="<div class='ui red tiny button' id='delPostButton'>刪除</div></div>";
 
 
                 }

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    sortBy('null');
     $('.ui.dropdown').dropdown();
     $('#post_modal').modal({
         closable:false,
@@ -11,18 +12,6 @@ $(document).ready(function(){
                 $('#modal_msg').html('');
             }
     }).modal('attach events','#post_button','show');
-
-    $('#del_modal').modal({
-        closable:false,
-        onApprove :
-            function(){
-                return false;
-            },
-        onDeny:
-            function(){
-                alert('gg');
-            }
-    })
 
 
     $('body').on('click','.ui.blue.tiny.button',
@@ -44,6 +33,11 @@ $(document).ready(function(){
             function(){
                 $('#p').val($(this).parent().children().val());
                 $('.ui.basic.test.modal').modal('show');
+            }
+            )
+    $('body').on('click','#cancelDel',
+            function(){
+                $('.ui.basic.test.modal').modal('hide');
             }
             )
 
