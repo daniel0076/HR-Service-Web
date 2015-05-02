@@ -11,10 +11,21 @@ $(document).ready(function(){
                 $('#modal_msg').html('');
             }
     }).modal('attach events','#post_button','show');
-    $('#post_modal').modal('attach events','.ui.blue.tiny.button','show');
+
+    $('#del_modal').modal({
+        closable:false,
+        onApprove :
+            function(){
+                return false;
+            },
+        onDeny:
+            function(){
+                alert('gg');
+            }
+    })
 
 
-    $('.ui.blue.tiny.button').click(
+    $('body').on('click','.ui.blue.tiny.button',
         function(){
             var rid=($(this).parent().children('#recruit_id').val());
             $('#modal_rid').val(rid);
@@ -26,9 +37,17 @@ $(document).ready(function(){
             changeValue('#education',$(this).parent().children('#educa').val());
             changeValue('#experience',$(this).parent().children('#exp').val());
             changeValue('#salary',$(this).parent().children('#sal').val());
-
+            $('#post_modal').modal('show');
         }
     )
+    $('body').on('click','.ui.red.tiny.button',
+            function(){
+                $('#p').val($(this).parent().children().val());
+                $('.ui.basic.test.modal').modal('show');
+            }
+            )
+
+
     function changeValue(dropdownID,value){
             $('.ui.dropdown.selection').has(dropdownID).dropdown('set selected',value);
     }
@@ -42,12 +61,6 @@ $(document).ready(function(){
     )
 
 
-    $('.ui.red.tiny.button').click(
-            function(){
-                $('#p').val($(this).parent().children().val());
-            }
-            )
-    $('.ui.basic.test.modal').modal('attach events','.ui.red.tiny.button','show');
     $('.ui.red.button.deny').click(function(){
 
     })
@@ -66,10 +79,15 @@ $(document).ready(function(){
         $.fn.fullpage.moveTo(0,0);
         setActive();
     })
-    $('div.fp-controlArrow').click(function(){
-        setActive();
+    $('#salarySortASC').click(function(){
+        sortBy("asc");
+    })
+    $('#salarySortDESC').click(function(){
+        sortBy("desc");
     })
 });
+
+
 function setActive() {
     if ($('#slideIndex').hasClass("active")) {
         $('#moveSlideRight,#moveSlideLeft').removeClass("active");
@@ -84,3 +102,10 @@ function setActive() {
         $('.ui.striped.table').remove();
     })
 };
+
+function sortBy(sort){
+    $.get("api/make_recruit_table.php?sort="+sort,function(data){
+        $('#recruitTable').html(data);
+    });
+
+}

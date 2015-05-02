@@ -81,7 +81,9 @@ $(document).ready(function() {
           <span style='float:right'><div class="normal ui animated fade black button" id="post_button">
             <div class="visible content">New Post</div>
             <div class="hidden content" style='text-align:center'><i class="plus icon"></i></div>
-            </div></span> <?php }?>
+            </div></span>
+
+<?php }?>
         </h2>
       <div class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
     <form class='ui form' style='margin-top:30px;text-align:center' name='searchForm' id='searchForm' onsubmit="<?php $search->printScript();?>;return false;">
@@ -117,27 +119,36 @@ $(document).ready(function() {
                 <th><i class="student icon"></i>Education Required</th>
                 <th><i class="theme icon"></i>Minimal Experience</th>
                 <th><i class="dollar icon"></i>Salary
-                    <i class="medium caret up icon" id="salarySortASC"></i>
-                    <i class="medium caret down icon" id="salarySortDESC"></i>
+                    <div class="ui icon mini button" id="salarySortASC">
+                        <i class="caret up icon" ></i>
+                    </div>
+                    <div class="ui icon mini button" id="salarySortDESC">
+                        <i class="caret down icon"></i>
+                    </div>
                 </th>
                 <th><i class="edit icon"></i>Operation</th>
             </thead>
-            <tbody>
+            <tbody id="recruitTable">
 <?php
 require_once('admin/auth/db_auth.php');
 require_once('model/boss_query.php');
+
 $db = new Boss();
 make_recruit_table($db);
 ?>
             </tbody>
+
         </table>
         <div></div>
           <!--display all post-->
          <?php
           if(isset($_SESSION['is_boss']))
           {
+
+
             $xajax->printJavascript('static/');
         ?>
+
 
           <div class="ui modal" id="post_modal">
             <i class="close icon"></i>
@@ -225,6 +236,7 @@ make_recruit_table($db);
 if(isset($_SESSION['is_boss']))
 {
 ?>
+
 <div class='slide' data-anchor='slide2' id="slideJobseeker">
       <div class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
         <div></div>
