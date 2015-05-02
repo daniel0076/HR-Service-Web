@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('boss/make_recruit_table.php');
+require_once('hrdb/search.php');
 if(isset($_SESSION['is_boss']))
 {
     require_once('boss/post_recruit.php');
@@ -46,10 +47,10 @@ $(document).ready(function() {
         if(isset($_SESSION['is_boss']))
         {?>
         <a class='item' id='moveSlideLeft' href='#'>
-            <i class='angle double left  icon'></i>Application List
+            <i class='list layout  icon'></i>Application List
         </a>
         <a class='item' id='moveSlideRight' href='#'>
-            <i class='angle double right icon'></i>Job Seeker List
+            <i class='list layout icon'></i>Job Seeker List
         </a>
         <?php }
         if(isset($_SESSION['is_user']))
@@ -73,9 +74,8 @@ $(document).ready(function() {
     <div class="container" id='fullpage'>
 <div class='section'>
     <div class='slide' data-anchor='slide1' id="slideIndex">
-      <div class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
-        <table class="ui striped table" style='margin-bottom:100px'>
-        <h2 class="ui header" style='text-align:center'>最夯職缺，只差你一個
+
+        <h2 class="ui header" style='text-align:center;margin-top:3em'>最夯職缺，只差你一個
         <?php if(isset($_SESSION['is_boss']))
                  { ?>
           <span style='float:right'><div class="normal ui animated fade black button" id="post_button">
@@ -83,6 +83,32 @@ $(document).ready(function() {
             <div class="hidden content" style='text-align:center'><i class="plus icon"></i></div>
             </div></span> <?php }?>
         </h2>
+      <div class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
+    <form class='ui form' style='margin-top:30px;text-align:center' name='searchForm' id='searchForm' onsubmit="<?php $search->printScript();?>;return false;">
+        <div class='inline fields' >
+            <div class="field">
+            <input type="text" placeholder="Occupation" name='occu_key'>
+            </div>
+            <div class="field">
+            <input type="text" placeholder="Location" name='loca_key'>
+            </div>
+            <div class="field">
+            <input type="text" placeholder="Work Time" name='time_key'>
+            </div>
+            <div class="field">
+            <input type="text" placeholder="Education Required" name='educ_key'>
+            </div>
+            <div class="field">
+            <input type="text" placeholder="Working Experience" name='expe_key'>
+            </div>
+            <div class="field">
+            <input type="text" placeholder="Salary" name='sala_key'>
+            </div>
+            <button class='ui button' type='submit' id='searching'>Search</button>
+        </div>
+    </form>
+        <table class="ui striped table" style='margin-bottom:100px' id='recruit_table'>
+
 
             <thead>
                 <th><i class="crosshairs icon"></i>Occupation</th>

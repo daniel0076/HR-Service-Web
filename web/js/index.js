@@ -80,4 +80,7 @@ function setActive() {
         $('#moveSlideRight').removeClass("active");
         $('#moveSlideLeft').addClass("active");
     }
+    $('#searching').click(function(){
+        $('.ui.striped.table').remove();
+    })
 };

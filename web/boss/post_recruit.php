@@ -7,7 +7,6 @@ require('admin/auth/db_auth.php');
 require('model/boss_query.php');
 require_once('static/xajax_core/xajaxAIO.inc.php');
 
-$xajax = new xajax();
 $reg= $xajax->registerFunction('postRecruit');
 $reg->useSingleQuote();
 $reg->addParameter(XAJAX_FORM_VALUES, 'recruitForm');
