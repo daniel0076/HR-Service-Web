@@ -90,12 +90,12 @@
             return false;
 
         }
-        public function make_table_query($order=null)
+        public function make_table_query($sort=null)
         {
-            if ($order=="DESC"){
+            if ($sort=="desc"){
                 $sql="SELECT recruit.*, location.location, occupation.occupation FROM recruit,location,occupation WHERE recruit.location_id=location.id and recruit.occupation_id=occupation.id ORDER BY `salary` DESC, `id` ASC ";
             }
-            else if($order=="ASC"){
+            else if($sort=="asc"){
                 $sql="SELECT recruit.*, location.location, occupation.occupation FROM recruit,location,occupation WHERE recruit.location_id=location.id and recruit.occupation_id=occupation.id ORDER BY `salary` ASC,`id` ASC ";
             }else{
                 $sql="SELECT recruit.*, location.location, occupation.occupation FROM recruit,location,occupation WHERE recruit.location_id=location.id and recruit.occupation_id=occupation.id ORDER BY `id` ASC";
