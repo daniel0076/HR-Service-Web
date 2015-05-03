@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once('../model/boss_query.php');
+require_once('../model/common_query.php');
 require_once('../admin/auth/db_auth.php');
-$db=new Boss();
+$db=new commonQuery();
 if(isset($_GET['sort'])){
     $sort=$_GET['sort'];
 }else{
