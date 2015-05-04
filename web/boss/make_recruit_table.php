@@ -14,7 +14,6 @@ function make_recruit_table ($db) {
                 {
                     $op.="<form style='display:inline' id='editform'><div class='ui blue tiny button' id='editButton'>修改</div>";
                     $op.="<input type='hidden' id='recruit_id' name='recruit_id' value='" .$r['id']. "'>";
-                    $op.="<input type='hidden' id='recruit_id' name='recruit_id' value='" .$r['id']. "'>";
                     $op.="<input type='hidden' id='loca'  value='" .$r['location_id']. "'>";
                     $op.="<input type='hidden' id='occu'  value='" .$r['occupation_id']. "'>";
                     $op.="<input type='hidden' id='work'  value='" .$r['working_time']. "'>";
