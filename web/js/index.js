@@ -1,3 +1,4 @@
+var lastClickedApply;
 $(document).ready(function(){
     $('.ui.dropdown').dropdown();
     $('#post_modal').modal({
@@ -36,12 +37,14 @@ $(document).ready(function(){
             )
     $('body').on('click','#apply',
             function(){
-                $(this).addClass("applychoosed");
+//                $(this).addClass('clicked');
+//              
+                lastClickedApply=$(this);
                 $('#apply_num').val($(this).parent().children().val());
                 $('#apply_modal').modal('show');
             }
             )
-            })
+            
     $('body').on('click','#cancelDel',
             function(){
                 $('#del_modal').modal('hide');
@@ -59,13 +62,12 @@ $(document).ready(function(){
             data:{apply_num:$(this).parent().children().val()},
             async:true,
             success:function(result){
-                $(this).parent().children().html("<div class='ui red button'>已申請</div>");
-                $('#apply_modal').modal('hide');
-            }
-          $.post("hrdb/apply.php",$('#applyform').serialize(),function(result){
-              $('.applychoosed').parent().html("<div class='ui red button'>已申請</div>");
+              lastClickedApply.parent().html("<div class='ui red button'>已申請</div>");
+                $('#apply_modal').modal('hide');}
+//          $.post("hrdb/apply.php",$('#applyform').serialize(),function(result){
+//              $('.ui.green.button').parent().html("<div class='ui red button'>已申請</div>");
           });
-          })
+        
       })
 
 
