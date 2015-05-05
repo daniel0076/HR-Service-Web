@@ -78,7 +78,7 @@ $(document).ready(function() {
 <div class='section'>
     <div class='slide' data-anchor='slide1' id="slideIndex">
 
-        <h2 class="ui header" style='text-align:center;margin-top:3em'>最夯職缺，只差你一個
+        <h2 class="ui header" style='text-align:center;margin:auto'>最夯職缺，只差你一個
         <?php if(isset($_SESSION['is_boss']))
                  { ?>
           <span style='float:right'><div class="normal ui animated fade black button" id="post_button">
@@ -88,9 +88,9 @@ $(document).ready(function() {
 
 <?php }?>
         </h2>
-<div ng-app="recruitTable" ng-controller="tableCtrl" data-ng-init="sortBy('null')" class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
+<div ng-app="recruitTable" ng-controller="tableCtrl" data-ng-init="search('')" class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
     <form class='ui form' style='margin-top:30px;text-align:center' name='searchForm' id='searchForm'>
-        <div class='inline fields' >
+        <div class='six fields'>
             <div class="field">
             <input type="text" placeholder="Occupation" ng-model="occupation">
             </div>
@@ -121,10 +121,10 @@ $(document).ready(function() {
             <th><i class="theme icon"></i>Minimal Experience</th>
             <th><i class="dollar icon"></i>Salary
 
-                    <div class="ui icon mini button" ng-click="sortBy('desc')">
+                    <div class="ui icon mini button" ng-click="search('desc')">
                         <i class="caret down icon"></i>
                     </div>
-                    <div class="ui icon mini button" ng-click="sortBy('asc')">
+                    <div class="ui icon mini button" ng-click="search('asc')">
                         <i class="caret up icon"></i>
                     </div>
             </th>
@@ -133,6 +133,7 @@ $(document).ready(function() {
         <tbody id="recruitTable" ng-bind-html="table">
         </tbody>
     </table>
+
 <?php
 
 require_once('admin/auth/db_auth.php');

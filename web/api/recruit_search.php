@@ -11,10 +11,10 @@ if(empty($form['occupation'])){ $occupation=null; }else{ $occupation=$form['occu
 if(empty($form['worktime'])){ $worktime=null; }else{ $worktime=$form['worktime'];}
 if(empty($form['education'])){ $education=null; }else{ $education=$form['education'];}
 if(empty($form['experience'])){ $experience=null; }else{ $experience=$form['experience'];}
-if(empty($form['salary'])){ $salary=null; }else{ $salary=$form['salary'];}
+if(empty($form['salary'])){ $salary=0; }else{ $salary=$form['salary'];}
+if(empty($form['sort'])){ $sort=""; }else{ $sort=$form['sort'];}
 
-
-$res=$db->searchJob($occupation,$location,$worktime,$education,$experience,$salary);
+$res=$db->searchJob($occupation,$location,$worktime,$education,$experience,$salary,$sort);
 if($res) make_recruit_table($res);
 else echo "Not Found";
 

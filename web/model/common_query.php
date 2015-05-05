@@ -42,37 +42,9 @@ INNER JOIN `occupation` ON recruit.occupation_id=occupation.id
             return false;
         }
     }
-    public function make_table_query($sort=null)
-    {
-            $sql="SELECT * FROM recruit_table_view";
-        if ($sort=="desc"){
-            $sort=" ORDER BY salary DESC";
-        }
-        else if($sort=="asc"){
-            $sort=" ORDER BY salary ASC";
-        }else{
-            $sort="";
-        }
-            $sql.=$sort;
-        try
-        {
-            $run=self::$myPDO->prepare($sql);
-            $run->execute();
-            $res=$run->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e)
-        {
-            echo 'Can\'t find ' . $attr . $e->getMessage();
-            return $e;
-        }
-        if($res)
-        {
-            return $res;
-        }
-        return false;
 
-    }
     public function searchJob($occupation=null,$location=null,
-        $worktime=null,$education=null,$experience=null,$salary=null)
+        $worktime=null,$education=null,$experience=null,$salary=0,$sort="")
     {
         $sql="SELECT * FROM recruit_table_view WHERE
 occupation      =:occupation
@@ -82,6 +54,16 @@ OR education    =:education
 OR experience   =:experience
 OR salary       >=:salary
 ";
+        if ($sort=="desc"){
+            $sort=" ORDER BY salary DESC";
+        }
+        else if($sort=="asc"){
+            $sort=" ORDER BY salary ASC";
+        }else{
+            $sort="";
+        }
+        $sql.=$sort;
+
         try
         {
             $run=self::$myPDO->prepare($sql);
