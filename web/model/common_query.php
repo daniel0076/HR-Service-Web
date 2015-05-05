@@ -62,7 +62,7 @@ INNER JOIN `occupation` ON recruit.occupation_id=occupation.id
         } catch (PDOException $e)
         {
             echo 'Can\'t find ' . $attr . $e->getMessage();
-            return false;
+            return $e;
         }
         if($res)
         {
@@ -71,13 +71,27 @@ INNER JOIN `occupation` ON recruit.occupation_id=occupation.id
         return false;
 
     }
-    public function searchJob()
+    public function searchJob($occupation=null,$location=null,
+        $worktime=null,$education=null,$experience=null,$salary=null)
     {
-        $sql="";
+        $sql="SELECT * FROM recruit_table_view WHERE
+occupation      =:occupation
+OR location      =:location
+OR working_time =:worktime
+OR education    =:education
+OR experience   =:experience
+OR salary       >=:salary
+";
         try
         {
             $run=self::$myPDO->prepare($sql);
-            $run->execute();
+            $run->execute(array(':location'=>$location,
+                                ':worktime'=>$worktime,
+                                ':occupation'=>$occupation,
+                                ':education'=>$education,
+                                ':experience'=>$experience,
+                                ':salary'=>$salary
+            ));
             $res=$run->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e)
         {

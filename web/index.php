@@ -88,53 +88,51 @@ $(document).ready(function() {
 
 <?php }?>
         </h2>
-      <div class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
-    <form class='ui form' style='margin-top:30px;text-align:center' name='searchForm' id='searchForm' onsubmit="<?php $search->printScript();?>;return false;">
+<div ng-app="recruitTable" ng-controller="tableCtrl" class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
+    <form class='ui form' style='margin-top:30px;text-align:center' name='searchForm' id='searchForm'>
         <div class='inline fields' >
             <div class="field">
-            <input type="text" placeholder="Occupation" name='occu_key'>
+            <input type="text" placeholder="Occupation" ng-model="occupation">
             </div>
             <div class="field">
-            <input type="text" placeholder="Location" name='loca_key'>
+            <input type="text" placeholder="Location" ng-model="location">
             </div>
             <div class="field">
-            <input type="text" placeholder="Work Time" name='time_key'>
+            <input type="text" placeholder="Work Time" ng-model="worktime">
             </div>
             <div class="field">
-            <input type="text" placeholder="Education Required" name='educ_key'>
+            <input type="text" placeholder="Education Required" ng-model="education">
             </div>
             <div class="field">
-            <input type="text" placeholder="Working Experience" name='expe_key'>
+            <input type="text" placeholder="Working Experience" ng-model="experience">
             </div>
             <div class="field">
-            <input type="text" placeholder="Salary" name='sala_key'>
+            <input type="text" placeholder="Salary" ng-model="salary">
             </div>
-            <button class='ui button' type='submit' id='searching'>Search</button>
+            <button class='ui button' type='submit' ng-click="search()">Search</button>
         </div>
     </form>
-        <div ng-app="sort" ng-controller="sortController">
-        <table class="ui striped table" style='margin-bottom:100px' id='recruit_table'>
-            <thead>
-                <th><i class="crosshairs icon"></i>Occupation</th>
-                <th><i class="marker icon"></i>Location</th>
-                <th><i class="wait icon"></i>Work Time</th>
-                <th><i class="student icon"></i>Education Required</th>
-                <th><i class="theme icon"></i>Minimal Experience</th>
-                <th><i class="dollar icon"></i>Salary
+    <table class="ui striped table" style='margin-bottom:100px' id='recruit_table'>
+        <thead>
+            <th><i class="crosshairs icon"></i>Occupation</th>
+            <th><i class="marker icon"></i>Location</th>
+            <th><i class="wait icon"></i>Work Time</th>
+            <th><i class="student icon"></i>Education Required</th>
+            <th><i class="theme icon"></i>Minimal Experience</th>
+            <th><i class="dollar icon"></i>Salary
 
-                        <div class="ui icon mini button" ng-click="sortBy('desc')">
-                            <i class="caret down icon"></i>
-                        </div>
-                        <div class="ui icon mini button" ng-click="sortBy('asc')">
-                            <i class="caret up icon"></i>
-                        </div>
-                </th>
-                <th><i class="edit icon"></i>Operation</th>
-            </thead>
-            <tbody id="recruitTable" ng-bind-html="table">
-            </tbody>
-        </table>
-</div>
+                    <div class="ui icon mini button" ng-click="sortBy('desc')">
+                        <i class="caret down icon"></i>
+                    </div>
+                    <div class="ui icon mini button" ng-click="sortBy('asc')">
+                        <i class="caret up icon"></i>
+                    </div>
+            </th>
+            <th><i class="edit icon"></i>Operation</th>
+        </thead>
+        <tbody id="recruitTable" ng-bind-html="table">
+        </tbody>
+    </table>
 <?php
 
 require_once('admin/auth/db_auth.php');
