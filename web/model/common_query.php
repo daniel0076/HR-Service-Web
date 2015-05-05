@@ -46,14 +46,38 @@ INNER JOIN `occupation` ON recruit.occupation_id=occupation.id
     public function searchJob($occupation=null,$location=null,
         $worktime=null,$education=null,$experience=null,$salary=0,$sort="")
     {
-        $sql="SELECT * FROM recruit_table_view WHERE
-occupation      =:occupation
-OR location      =:location
-OR working_time =:worktime
-OR education    =:education
-OR experience   =:experience
-OR salary       >=:salary
-";
+        $sql="SELECT * FROM recruit_table_view WHERE";
+        if($occupation!=null){
+            $sql.=" occupation =:occupation";
+        }
+        else{
+            $sql.=" (occupation IS NOT NULL  OR occupation !=:occupation)";
+        }
+        if($location!=null){
+            $sql.=" AND location =:location";
+        }
+        else{
+            $sql.=" AND (location IS NOT NULL OR location !=:location)";
+        }
+        if($worktime!=null){
+            $sql.=" AND working_time =:worktime";
+        }
+        else{
+            $sql.=" AND (working_time IS NOT NULL OR working_time !=:worktime)";
+        }
+        if($education!=null){
+            $sql.=" AND education =:education";
+        }
+        else{
+            $sql.=" AND (education IS NOT NULL OR education !=:education)";
+        }
+        if($experience!=null){
+            $sql.=" AND experience =:experience";
+        }
+        else{
+            $sql.=" AND (experience IS NOT NULL OR experience !=:experience)";
+        }
+        $sql.=" AND salary >=:salary";
         if ($sort=="desc"){
             $sort=" ORDER BY salary DESC";
         }
