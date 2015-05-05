@@ -46,9 +46,18 @@ INNER JOIN `occupation` ON recruit.occupation_id=occupation.id
     public function searchJob($occupation=null,$location=null,
         $worktime=null,$education=null,$experience=null,$salary=0,$sort="")
     {
-        if($occupation==null&&$location==null&&$worktime==null&&$education==null&&$experience==null&&$salary==null)
+        if($occupation==null&&$location==null&&$worktime==null&&$education==null&&$experience==null&&$salary==0)
         {
             $sql="SELECT * FROM recruit_table_view";
+            if ($sort=="desc"){
+                $sort=" ORDER BY salary DESC";
+            }
+            else if($sort=="asc"){
+                $sort=" ORDER BY salary ASC";
+            }else{
+                $sort="";
+            }
+            $sql.=$sort;
         try
         {
             $run=self::$myPDO->prepare($sql);
