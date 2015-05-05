@@ -92,24 +92,23 @@ $(document).ready(function() {
     <form class='ui form' style='margin-top:30px;text-align:center' name='searchForm' id='searchForm'>
         <div class='six fields'>
             <div class="field">
-            <input type="text" placeholder="Occupation" ng-model="occupation">
+            <input type="text" placeholder="Occupation" ng-model="occupation" ng-change="search()">
             </div>
             <div class="field">
-            <input type="text" placeholder="Location" ng-model="location">
+            <input type="text" placeholder="Location" ng-model="location" ng-change="search()">
             </div>
             <div class="field">
-            <input type="text" placeholder="Work Time" ng-model="worktime">
+            <input type="text" placeholder="Work Time" ng-model="worktime" ng-change="search()">
             </div>
             <div class="field">
-            <input type="text" placeholder="Education Required" ng-model="education">
+            <input type="text" placeholder="Education Required" ng-model="education" ng-change="search()">
             </div>
             <div class="field">
-            <input type="text" placeholder="Working Experience" ng-model="experience">
+            <input type="text" placeholder="Working Experience" ng-model="experience" ng-change="search()">
             </div>
             <div class="field">
-            <input type="text" placeholder="Salary" ng-model="salary">
+            <input type="text" placeholder="Salary" ng-model="salary" ng-change="search()">
             </div>
-            <button class='ui button' type='submit' ng-click="search()">Search</button>
         </div>
     </form>
     <table class="ui striped table" style='margin-bottom:100px' id='recruit_table'>
