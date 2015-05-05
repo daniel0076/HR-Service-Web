@@ -110,5 +110,41 @@ INNER JOIN `occupation` ON recruit.occupation_id=occupation.id
         }
         return false;
     }
+        public function appliedList($user_id)
+        {
+            try
+            {
+                $sql = "SELECT * FROM application WHERE user_id = :user_id";
+                $run = self::$myPDO->prepare($sql);
+                $run->execute(array(':user_id'=>$user_id));
+                $res = $run->fetchALL(PDO::FETCH_COLUMN,2);
+                var_dump($res);
+            }catch (PDOException $e)
+            {
+                echo 'Query Failed' . $e->getMessage();
+                return false;
+            }
+            if($res)
+            {
+                return $res;
+            }
+            return false;
+
+        }
+        public function apply($user_id,$recruit_id)
+        {
+            try
+            {
+                $sql="INSERT INTO application (user_id, recruit_id) VALUES (:user_id, :recruit_id)";
+                $run = self::$myPDO->prepare($sql);
+                $res = $run->execute(array(':user_id'=>$user_id,
+                                           ':recruit_id'=>$recruit_id));
+            } catch (PDOException $e)
+            {
+                echo 'Apply Failed'.$e->getMessage();
+                return false;
+            }
+            return $res;
+        }
 }
 ?>

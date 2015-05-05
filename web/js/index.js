@@ -31,14 +31,42 @@ $(document).ready(function(){
     $('body').on('click','.ui.red.tiny.button',
             function(){
                 $('#p').val($(this).parent().children().val());
-                $('.ui.basic.test.modal').modal('show');
+                $('#del_modal').modal('show');
             }
             )
+    $('body').on('click','#apply',
+            function(){
+                $(this).addClass("applychoosed");
+                $('#apply_num').val($(this).parent().children().val());
+                $('#apply_modal').modal('show');
+            }
+            )
+            })
     $('body').on('click','#cancelDel',
             function(){
-                $('.ui.basic.test.modal').modal('hide');
+                $('#del_modal').modal('hide');
             }
             )
+    $('body').on('click','#cancelApp',
+            function(){
+                $('#apply_modal').modal('hide');
+            }
+            )
+    $('body').on('click','#applyConf',function(){
+        $.ajax({
+            method:"POST",
+            url:"hrdb/apply.php",
+            data:{apply_num:$(this).parent().children().val()},
+            async:true,
+            success:function(result){
+                $(this).parent().children().html("<div class='ui red button'>已申請</div>");
+                $('#apply_modal').modal('hide');
+            }
+          $.post("hrdb/apply.php",$('#applyform').serialize(),function(result){
+              $('.applychoosed').parent().html("<div class='ui red button'>已申請</div>");
+          });
+          })
+      })
 
 
     function changeValue(dropdownID,value){
