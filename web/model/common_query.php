@@ -46,6 +46,27 @@ INNER JOIN `occupation` ON recruit.occupation_id=occupation.id
     public function searchJob($occupation=null,$location=null,
         $worktime=null,$education=null,$experience=null,$salary=0,$sort="")
     {
+        if($occupation==null&&$location==null&&$worktime==null&&$education==null&&$experience==null&&$salary==null)
+        {
+            $sql="SELECT * FROM recruit_table_view";
+        try
+        {
+            $run=self::$myPDO->prepare($sql);
+            $run->execute();
+            $res=$run->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e)
+        {
+            echo 'Can\'t find ' . $attr . $e->getMessage();
+            return false;
+        }
+        if($res)
+        {
+            return $res;
+        }
+        return false;
+        }
+        else
+        {
         $sql="SELECT * FROM recruit_table_view WHERE
 occupation      =:occupation
 OR location      =:location
@@ -85,7 +106,7 @@ OR salary       >=:salary
             return $res;
         }
         return false;
-
+        }
     }
 }
 ?>
