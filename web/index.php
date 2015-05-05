@@ -88,7 +88,7 @@ $(document).ready(function() {
 
 <?php }?>
         </h2>
-<div ng-app="recruitTable" ng-controller="tableCtrl" class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
+<div ng-app="recruitTable" ng-controller="tableCtrl" data-ng-init="sortBy('null')" class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
     <form class='ui form' style='margin-top:30px;text-align:center' name='searchForm' id='searchForm'>
         <div class='inline fields' >
             <div class="field">
