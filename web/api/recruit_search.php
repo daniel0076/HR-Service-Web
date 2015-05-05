@@ -40,9 +40,12 @@ function make_recruit_table ($res) {
                 $op.="</form>";
                 $op.="<div style='display:inline'><input type='hidden' value='".$r['id']."'>";
                 $op.="<div class='ui red tiny button' id='delPostButton'>刪除</div></div>";
-
-
             }
+        }
+        else if(isset($_SESSION['is_user']))
+        {
+            $op.="<div class='ui green button'>申請</div>";
+            $op.="<div class='ui yellow button'>加入最愛</div>";
         }
         $row="<tr>";
         $row.="<td>".htmlspecialchars($r['occupation'])."</td>";
