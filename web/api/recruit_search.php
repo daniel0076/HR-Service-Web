@@ -15,11 +15,17 @@ if(empty($form['salary'])){ $salary=0; }else{ $salary=$form['salary'];}
 if(empty($form['sort'])){ $sort=""; }else{ $sort=$form['sort'];}
 
 $res=$db->searchJob($occupation,$location,$worktime,$education,$experience,$salary,$sort);
-if($res) make_recruit_table($res);
+$applied=array();
+if(isset($_SESSION['is_user'])){
+
+    $applied=$db->appliedList($_SESSION['user_id']);
+}
+
+if($res) make_recruit_table($res,$applied);
 else echo "Not Found";
 
 
-function make_recruit_table ($res) {
+function make_recruit_table ($res,$applied=null) {
     foreach($res as $r)
     {
         $op="";
@@ -44,7 +50,12 @@ function make_recruit_table ($res) {
         }
         else if(isset($_SESSION['is_user']))
         {
-            $op.="<div class='ui green button'>申請</div>";
+            if(!empty($applied)&&in_array($r['id'],$applied)){
+                $op.="<div class='ui red button'>已申請</div>";
+            }
+            else{
+                $op.="<div class='buttonContainer' style='display:inline'><input type='hidden' value='".$r['id']."'><div class='ui green button' id='apply'>申請</div></div>";
+            }
             $op.="<div class='ui yellow button'>加入最愛</div>";
         }
         $row="<tr>";

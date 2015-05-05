@@ -143,13 +143,27 @@ $db = new Boss();
 ?>
         <div></div>
           <!--display all post-->
-         <?php
+<?php
+         if(isset($_SESSION['is_user']))
+         {?>
+        <div class='ui basic test modal' id="apply_modal">
+        <i class='close icon'></i>
+        <div class='header'>Apply</div>
+            <form id='applyform'>
+                <input type='hidden' name='apply_num' id='apply_num' value=''>
+                <div class='ui red button' id="cancelApp" >Cancel</div>
+                <button type='submit' class='ui green button' id='applyConf'>Confirm</button>
+            </form>
+        </div>
+<?php
+         }
           if(isset($_SESSION['is_boss']))
           {
 
 
             $xajax->printJavascript('static/');
         ?>
+
 
         <div class='ui basic test modal' id="del_modal">
         <i class='close icon'></i>

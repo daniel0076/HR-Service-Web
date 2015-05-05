@@ -20,4 +20,3 @@ ctrl.controller('tableCtrl',function($scope, $window,$http,$sce) {
     }
 
 })
-
