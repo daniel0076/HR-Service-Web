@@ -45,18 +45,18 @@ function make_recruit_table ($res,$applied=null) {
 
                 $op.="</form>";
                 $op.="<div style='display:inline'><input type='hidden' value='".$r['id']."'>";
-                $op.="<div class='ui red tiny button' id='delPostButton'>刪除</div></div>";
+                $op.="<div class='ui red tiny button' style='float:right' id='delPostButton'>刪除</div></div>";
             }
         }
         else if(isset($_SESSION['is_user']))
         {
             if(!empty($applied)&&in_array($r['id'],$applied)){
-                $op.="<div class='ui red button'>已申請</div>";
+                $op.="<div class='ui red button' >已申請</div>";
             }
             else{
                 $op.="<div class='buttonContainer' style='display:inline'><input type='hidden' value='".$r['id']."'><div class='ui green button' id='apply'>申請</div></div>";
             }
-            $op.="<div class='ui yellow button'>加入最愛</div>";
+            $op.="<div class='ui yellow button' style='float:right'>加入最愛</div>";
         }
         $row="<tr>";
         $row.="<td>".htmlspecialchars($r['occupation'])."</td>";
