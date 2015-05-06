@@ -38,13 +38,13 @@ $(document).ready(function(){
     $('body').on('click','#apply',
             function(){
 //                $(this).addClass('clicked');
-//              
+//
                 lastClickedApply=$(this);
                 $('#apply_num').val($(this).parent().children().val());
                 $('#apply_modal').modal('show');
             }
             )
-            
+
     $('body').on('click','#cancelDel',
             function(){
                 $('#del_modal').modal('hide');
@@ -67,7 +67,7 @@ $(document).ready(function(){
 //          $.post("hrdb/apply.php",$('#applyform').serialize(),function(result){
 //              $('.ui.green.button').parent().html("<div class='ui red button'>已申請</div>");
           });
-        
+
       })
 
 
@@ -102,13 +102,14 @@ $(document).ready(function(){
         $.fn.fullpage.moveTo(0,0);
         setActive();
     })
-    $('#salarySortASC').click(function(){
-        sortBy("asc");
-    })
-    $('#salarySortDESC').click(function(){
-        sortBy("desc");
-    })
 });
+
+function addFavor(rid){
+    $.post( "api/add_favor.php",{rid:rid}, function( data ) {
+        //call angular in function
+        angular.element('#tableCtrl').scope().search();
+    });
+}
 
 
 function setActive() {

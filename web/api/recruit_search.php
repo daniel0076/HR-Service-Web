@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('../model/common_query.php');
+require_once('../model/user_query.php');
 require_once('../admin/auth/db_auth.php');
 $db=new commonQuery();
 
@@ -17,15 +18,17 @@ if(empty($form['sort'])){ $sort=""; }else{ $sort=$form['sort'];}
 $res=$db->searchJob($occupation,$location,$worktime,$education,$experience,$salary,$sort);
 $applied=array();
 if(isset($_SESSION['is_user'])){
-
     $applied=$db->appliedList($_SESSION['user_id']);
+    $favorite=$db->checkFavor($_SESSION['user_id']);
+}else{
+    $favorite=null;
 }
 
-if($res) make_recruit_table($res,$applied);
+if($res) make_recruit_table($res,$applied,$favorite);
 else echo "Not Found";
 
 
-function make_recruit_table ($res,$applied=null) {
+function make_recruit_table ($res,$applied=null,$favorite=null) {
     foreach($res as $r)
     {
         $op="";
@@ -50,13 +53,19 @@ function make_recruit_table ($res,$applied=null) {
         }
         else if(isset($_SESSION['is_user']))
         {
+            $rid=$r['id'];
             if(!empty($applied)&&in_array($r['id'],$applied)){
                 $op.="<div class='ui red button'>已申請</div>";
             }
             else{
                 $op.="<div class='buttonContainer' style='display:inline'><input type='hidden' value='".$r['id']."'><div class='ui green button' id='apply'>申請</div></div>";
             }
-            $op.="<div class='ui yellow button'>加入最愛</div>";
+            if(!empty($favorite)&&in_array($rid,$favorite)){
+                $op.="<div class='ui yellow button'>我的最愛</div>";
+            }
+            else{
+                $op.="<div class='ui blue button' onclick='addFavor($rid)'>加入最愛</div>";
+            }
         }
         $row="<tr>";
         $row.="<td>".htmlspecialchars($r['occupation'])."</td>";

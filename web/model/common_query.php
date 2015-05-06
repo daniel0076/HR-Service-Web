@@ -110,6 +110,80 @@ INNER JOIN `occupation` ON recruit.occupation_id=occupation.id
         }
         return false;
     }
+        public function addFavorite($user_id,$rid)
+        {
+            try
+            {
+                $sql = "INSERT INTO `favorite` (`id`,`user_id`,`recruit_id`) VALUES (NULL,:user_id,:recruit_id)";
+                $run = self::$myPDO->prepare($sql);
+                $run->execute(array(':user_id'=>$user_id,':recruit_id'=>$rid));
+                $res = $run->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $e)
+            {
+                return false;
+            }
+            return true;
+        }
+        public function checkFavor($user_id)
+        {
+            try
+            {
+                $sql = "SELECT * FROM `favorite` WHERE `user_id` = :user_id";
+                $run = self::$myPDO->prepare($sql);
+                $run->execute(array(':user_id'=>$user_id));
+                $res = $run->fetchALL(PDO::FETCH_COLUMN,2);
+            }catch (PDOException $e)
+            {
+                echo 'Query Failed' . $e->getMessage();
+                return false;
+            }
+            if($res)
+            {
+                return $res;
+            }
+            return false;
+
+        }
+        public function getFavor($user_id)
+        {
+            try
+            {
+                $sql = "SELECT *,favorite.id AS fid FROM `favorite` INNER JOIN `recruit_table_view` ON favorite.recruit_id=recruit_table_view.id WHERE user_id=:user_id";
+                $run = self::$myPDO->prepare($sql);
+                $run->execute(array(':user_id'=>$user_id));
+                $res = $run->fetchALL(PDO::FETCH_ASSOC);
+            }catch (PDOException $e)
+            {
+                echo 'Query Failed' . $e->getMessage();
+                return false;
+            }
+            if($res)
+            {
+                return $res;
+            }
+            return false;
+
+        }
+        public function delFavorite($fid)
+        {
+            try
+            {
+                $sql = "DELETE FROM `favorite` WHERE `id`=:fid";
+                $run = self::$myPDO->prepare($sql);
+                $run->execute(array(':fid'=>$fid));
+                $res = $run->fetchALL(PDO::FETCH_ASSOC);
+            }catch (PDOException $e)
+            {
+                echo 'Query Failed' . $e->getMessage();
+                return false;
+            }
+            if($res)
+            {
+                return true;
+            }
+            return false;
+
+        }
         public function appliedList($user_id)
         {
             try
@@ -118,7 +192,6 @@ INNER JOIN `occupation` ON recruit.occupation_id=occupation.id
                 $run = self::$myPDO->prepare($sql);
                 $run->execute(array(':user_id'=>$user_id));
                 $res = $run->fetchALL(PDO::FETCH_COLUMN,2);
-                var_dump($res);
             }catch (PDOException $e)
             {
                 echo 'Query Failed' . $e->getMessage();

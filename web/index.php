@@ -74,9 +74,9 @@ $(document).ready(function() {
              }?>
         </div>
       </div>
-    <div class="container" id='fullpage'>
-<div class='section'>
-    <div class='slide' data-anchor='slide1' id="slideIndex">
+  <div ng-app="recruitTable" ng-controller="tableCtrl" data-ng-init="search()" class="container" id='fullpage'>
+    <div class='section'>
+      <div class='slide' data-anchor='slide1' id="slideIndex">
 
         <h2 class="ui header" style='text-align:center;margin:auto'>最夯職缺，只差你一個
         <?php if(isset($_SESSION['is_boss']))
@@ -88,7 +88,7 @@ $(document).ready(function() {
 
 <?php }?>
         </h2>
-<div ng-app="recruitTable" ng-controller="tableCtrl" data-ng-init="search('')" class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
+<div id="tableCtrl" class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
     <form class='ui form' style='margin-top:30px;text-align:center' name='searchForm' id='searchForm'>
         <div class='six fields'>
             <div class="field">
@@ -291,11 +291,37 @@ if(isset($_SESSION['is_boss']))
 if(isset($_SESSION['is_user']))
 {?>
 <div class='slide' data-anchor='slide2'>
+  <table class="ui striped table" style='margin-bottom:100px' id='recruit_table'>
+      <thead>
+          <th><i class=""></i>ID</th>
+          <th><i class="crosshairs icon"></i>Occupation</th>
+          <th><i class="marker icon"></i>Location</th>
+          <th><i class="wait icon"></i>Work Time</th>
+          <th><i class="student icon"></i>Education Required</th>
+          <th><i class="theme icon"></i>Minimal Experience</th>
+          <th><i class="dollar icon"></i>Salary </th>
+          <th><i class="edit icon"></i>Operation</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="row in list">
+            <td>{{row.fid}}</td>
+            <td>{{row.occupation}}</td>
+            <td>{{row.location}}</td>
+            <td>{{row.working_time}}</td>
+            <td>{{row.education}}</td>
+            <td>{{row.experience}}</td>
+            <td>{{row.salary}}</td>
+            <td>
+              <button ng-click="delFavor(row.fid)" class='ui red button'>Delete</button>
+            </td>
+        </tr>
+      </tbody>
+  </table>
 </div>
 <?php
 }
 ?>
+      </div>
     </div>
-</div>
   </body>
 </html>

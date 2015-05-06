@@ -13,6 +13,7 @@
                 echo "Please require admin/auth/db_auth.php\n";
             }
         }
+
         public function make_specialty_table_query()
         {
             try
