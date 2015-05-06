@@ -37,7 +37,8 @@ $login->addParameter(XAJAX_FORM_VALUES, 'loginForm');
 $xajax->processRequest();
 
 function login($form) {
-    global $db;
+    $dsn="mysql:host=".$GLOBALS['hostname'].";dbname=".$GLOBALS['dbname'].";charset=".$GLOBALS['charset'];
+    $db=new PDO($dsn,$GLOBALS['user'],$GLOBALS['passwd']);
     $success = false;
     $boss_success= false;
     $objRes = new xajaxResponse();

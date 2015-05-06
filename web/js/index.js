@@ -1,4 +1,5 @@
 var lastClickedApply;
+var lastDelete;
 $(document).ready(function(){
     $('.ui.dropdown').dropdown();
     $('#post_modal').modal({
@@ -31,14 +32,24 @@ $(document).ready(function(){
     )
     $('body').on('click','.ui.red.tiny.button',
             function(){
+                lastDelete=$(this);
                 $('#p').val($(this).parent().children().val());
                 $('#del_modal').modal('show');
             }
             )
+    $('body').on('click','#delConf',
+            function(){
+                $.post('boss/deletePost.php',$('#delpost').serialize(),
+                        function(){
+                            lastDelete.parent().parent().parent().remove();
+                        });
+            $('#del_modal').modal('hide');
+            var applied="#applied"+$('#delpost').children().val();
+            $(applied).remove();
+            }
+            )
     $('body').on('click','#apply',
             function(){
-//                $(this).addClass('clicked');
-//              
                 lastClickedApply=$(this);
                 $('#apply_num').val($(this).parent().children().val());
                 $('#apply_modal').modal('show');
@@ -64,11 +75,18 @@ $(document).ready(function(){
             success:function(result){
               lastClickedApply.parent().html("<div class='ui red button'>已申請</div>");
                 $('#apply_modal').modal('hide');}
-//          $.post("hrdb/apply.php",$('#applyform').serialize(),function(result){
-//              $('.ui.green.button').parent().html("<div class='ui red button'>已申請</div>");
           });
         
       })
+    $('body').on('click','#hire',function(){
+        $.post('boss/deletePost.php',{p:$(this).parent().parent().parent().parent().children().val()},
+                function(){
+
+                })
+        var post='#post'+$(this).parent().parent().parent().parent().children().val();
+        $(this).parent().parent().parent().parent().remove();
+        $(post).remove();
+    })
 
 
     function changeValue(dropdownID,value){

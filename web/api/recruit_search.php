@@ -58,7 +58,7 @@ function make_recruit_table ($res,$applied=null) {
             }
             $op.="<div class='ui yellow button' style='float:right'>加入最愛</div>";
         }
-        $row="<tr>";
+        $row="<tr id='post".$r['id']."'>";
         $row.="<td>".htmlspecialchars($r['occupation'])."</td>";
         $row.="<td>".htmlspecialchars($r['location'])."</td>";
         $row.="<td>".htmlspecialchars($r['working_time'])."</td>";

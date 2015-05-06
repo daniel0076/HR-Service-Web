@@ -1,5 +1,4 @@
 <?php
-echo 'zzz';
 session_start();
 if(!isset($_SESSION['is_boss']))
 {
@@ -15,6 +14,7 @@ if(isset($_POST['p']))
     {
         $res=$db->deletePost($_POST['p']);
     }
-    header("Location: ../index.php");
+    return;
+#    header("Location: ../index.php");
 }
 ?>

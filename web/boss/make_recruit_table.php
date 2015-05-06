@@ -97,4 +97,8 @@ function make_location_dropdown($db){
     }
 
 }
+function make_application_list()
+{
+
+}
 ?>
