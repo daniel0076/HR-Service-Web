@@ -6,6 +6,6 @@ $db=new commonQuery();
 $user_id=$_SESSION['user_id'];
 
 $res=$db->getFavor($user_id);
-$res=json_encode($res);
-echo $res;
+if($res) echo json_encode($res);
+else echo json_encode([])
 ?>

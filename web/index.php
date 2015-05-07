@@ -74,7 +74,7 @@ $(document).ready(function() {
              }?>
         </div>
       </div>
-  <div ng-app="recruitTable" ng-controller="tableCtrl" data-ng-init="search()" class="container" id='fullpage'>
+  <div ng-app="recruitTable" ng-controller="tableCtrl" data-ng-init="search(); getFavor();" class="container" id='fullpage'>
     <div class='section'>
       <div class='slide' data-anchor='slide1' id="slideIndex">
 

@@ -108,6 +108,7 @@ function addFavor(rid){
     $.post( "api/add_favor.php",{rid:rid}, function( data ) {
         //call angular in function
         angular.element('#tableCtrl').scope().search();
+        angular.element('#tableCtrl').scope().getFavor();
     });
 }
 
