@@ -4,9 +4,11 @@ class commonQuery
     private static $myPDO=null;
     public function __construct()
     {
-        if(isset($GLOBALS['db']))
+        if(isset($GLOBALS['hostname']))
         {
-            self::$myPDO = $GLOBALS['db'];
+#            self::$myPDO = $GLOBALS['db'];
+            $db="mysql:host=".$GLOBALS['hostname'].";dbname=".$GLOBALS['dbname'].";charset=".$GLOBALS['charset'];
+            self::$myPDO=new PDO($db,$GLOBALS['user'],$GLOBALS['passwd']);
         }
         else
         {
@@ -218,6 +220,47 @@ INNER JOIN `occupation` ON recruit.occupation_id=occupation.id
                 return false;
             }
             return $res;
+        }
+        public function applicationList($boss_id)
+        {
+            try
+            {
+                $sql="SELECT * FROM recruit_table_view WHERE employer_id = :employer_id";
+                $run = self::$myPDO->prepare($sql);
+                $run->execute(array(':employer_id'=>$boss_id));
+                $res = $run->fetchAll(PDO::FETCH_ASSOC);
+                
+            }catch (PDOException $e)
+            {
+                echo 'List query failed ' . $e->getMessage();
+                return false;
+            }
+            if($res)
+            {
+                return $res;
+            }
+            return false;
+        }
+        public function findAppliedUser($recruit_id) 
+        {
+            try
+            {
+                $sql="SELECT *,account,age,gender,email,phone,expected_salary,education FROM application INNER JOIN user ON application.user_id = user.id WHERE application.recruit_id = :recruit_id";
+            $run = self::$myPDO->prepare($sql);
+            $run->execute(array(':recruit_id'=>$recruit_id));
+            $res = $run->fetchAll(PDO::FETCH_ASSOC);
+            }catch (PDOException $e)
+            {
+                echo 'Query failed ' . $e->getMessage();
+                return false;
+            }
+            if($res)
+            {
+                return $res;
+            }
+            return false;
+
+
         }
 }
 ?>

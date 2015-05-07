@@ -39,13 +39,6 @@ $(document).ready(function() {
       <a class="item" id='mainpage' href="#">
         <i class="lightning icon"></i> Just Sudo It
       </a>
-      <!--    <div class="ui pointing dropdown link item">
-        <div class="text">2015-DB</div>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-        <div class="item">Lab1</div>
-        </div>
-        </div>-->
         <?php
         if(isset($_SESSION['is_boss']))
         {?>
@@ -74,9 +67,10 @@ $(document).ready(function() {
              }?>
         </div>
       </div>
-  <div ng-app="recruitTable" ng-controller="tableCtrl" data-ng-init="search(); getFavor();" class="container" id='fullpage'>
+  <div ng-app="recruitTable" ng-controller="tableCtrl" id="tableCtrl"  data-ng-init="search(); getFavor();" class="container" id='fullpage'>
     <div class='section'>
       <div class='slide' data-anchor='slide1' id="slideIndex">
+
 
         <h2 class="ui header" style='text-align:center;margin:auto'>最夯職缺，只差你一個
         <?php if(isset($_SESSION['is_boss']))
@@ -88,7 +82,7 @@ $(document).ready(function() {
 
 <?php }?>
         </h2>
-<div id="tableCtrl" class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
+<div class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
     <form class='ui form' style='margin-top:30px;text-align:center' name='searchForm' id='searchForm'>
         <div class='six fields'>
             <div class="field">
@@ -127,7 +121,7 @@ $(document).ready(function() {
                         <i class="caret up icon"></i>
                     </div>
             </th>
-            <th><i class="edit icon"></i>Operation</th>
+            <th style='text-align:center'><i class="edit icon"></i>Operation</th>
         </thead>
         <tbody id="recruitTable" ng-bind-html="table">
         </tbody>
@@ -168,10 +162,10 @@ $db = new Boss();
         <div class='ui basic test modal' id="del_modal">
         <i class='close icon'></i>
         <div class='header'>Delete the Post</div>
-            <form action='boss/deletePost.php' method='POST'>
+            <form id='delpost'>
                 <input type='hidden' name='p' id='p' value=''>
                 <div class='ui red button' id="cancelDel" >Cancel</div>
-                <button type='submit' class='ui green button'>Confirm</button>
+                <button type='submit' class='ui green button' id='delConf'>Confirm</button>
             </form>
         </div>
 
@@ -286,6 +280,20 @@ if(isset($_SESSION['is_boss']))
       </div>
 </div>
 <div class='slide' data-anchor='slide3' id="slideAppli">
+    <div class='ui segment' style='width:90%;height:100%;overflow-y:auto;'>
+        <div class='ui header'>待審名單</div>
+<?php
+
+unset($db);
+require_once 'api/applicationList.php';
+require_once 'model/common_query.php';
+require_once 'model/user_query.php';
+$common = new commonQuery();
+$user = new JobSeeker();
+$res=$common->applicationList($_SESSION['boss_id']);
+applied($res,$common,$user);
+?>
+    </div>
 </div>
 <?php }
 if(isset($_SESSION['is_user']))

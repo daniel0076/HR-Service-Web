@@ -4,9 +4,11 @@
         private static $myPDO = null;
         public function __construct()
         {
-            if(isset($GLOBALS['db']))
+            if(isset($GLOBALS['hostname']))
             {
-                self::$myPDO = $GLOBALS['db'];
+                #                self::$myPDO = $GLOBALS['db'];
+            $db="mysql:host=".$GLOBALS['hostname'].";dbname=".$GLOBALS['dbname'].";charset=".$GLOBALS['charset'];
+            self::$myPDO=new PDO($db,$GLOBALS['user'],$GLOBALS['passwd']);
             }
             else
             {
