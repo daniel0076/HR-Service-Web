@@ -42,14 +42,15 @@ function login($form) {
     $success = false;
     $boss_success= false;
     $objRes = new xajaxResponse();
-    $boss_query="SELECT * FROM `employer` WHERE `account` = :user AND `password` = :password LIMIT 1";
-    $user_query="SELECT * FROM `user` WHERE `account` = :user AND `password` = :password LIMIT 1";
+    $boss_query="SELECT * FROM `employer` WHERE `account` = :user LIMIT 1";
+    $user_query="SELECT * FROM `user` WHERE `account` = :user LIMIT 1";
 
     try {
         $check= $db->prepare($boss_query);
-        $check->execute(array(':user'=> $form['user'],':password'=> hash('sha256',$form['password']) ));
+        $check->execute(array(':user'=> $form['user']));
         $result=$check->fetch(PDO::FETCH_ASSOC);
-        if($result>0){
+        $pwd_hash=$result['password'];
+        if(password_verify($form['password'],$pwd_hash)){
             $boss_success=true;
             $_SESSION['is_authed']=true;
             $_SESSION['is_boss']=true;
@@ -64,9 +65,10 @@ function login($form) {
     if( !$boss_success) {
         try {
             $check= $db->prepare($user_query);
-            $check->execute(array(':user'=> $form['user'],':password'=> hash('sha256',$form['password']) ));
+            $check->execute(array(':user'=> $form['user']));
             $result=$check->fetch(PDO::FETCH_ASSOC);
-            if($result>0){
+            $pwd_hash=$result['password'];
+            if(password_verify($form['password'],$pwd_hash)){
                 $success=true;
                 $_SESSION['is_authed']=true;
                 $_SESSION['is_user']=true;

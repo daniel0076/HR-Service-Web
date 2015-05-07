@@ -72,7 +72,7 @@
                 $sql_specialty="INSERT INTO user_specialty (user_id,specialty_id) VALUES (:user_id,:specialty_id)";
                 $run = self::$myPDO->prepare($sql_user);
                 $is_success1=$run->execute(array(':account'=>$account,
-                                    ':password'=>hash('sha256',$password),
+                                    ':password'=>password_hash($password,PASSWORD_DEFAULT),
                                     ':education'=>$education,
                                     ':expected_salary'=>$expected_salary,
                                     ':phone'=>$phone,

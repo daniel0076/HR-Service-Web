@@ -41,7 +41,7 @@
                 $sql = "INSERT INTO employer (account,password,phone,email) VALUES (:account,:password,:phone,:email)";
                 $run = self::$myPDO->prepare($sql);
                 $run->execute(array(':account'=>$account,
-                                    ':password'=>hash('sha256',$password),
+                                    ':password'=>password_hash($password,PASSWORD_DEFAULT),
                                     ':phone'=>$phone,
                                     ':email'=>$email));
             } catch (PDOException $e)
