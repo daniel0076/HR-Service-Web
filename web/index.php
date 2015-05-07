@@ -72,6 +72,8 @@ $(document).ready(function() {
       <div class='slide' data-anchor='slide1' id="slideIndex">
 
 
+
+<div class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
         <h2 class="ui header" style='text-align:center;margin:auto'>最夯職缺，只差你一個
         <?php if(isset($_SESSION['is_boss']))
                  { ?>
@@ -82,7 +84,6 @@ $(document).ready(function() {
 
 <?php }?>
         </h2>
-<div class="ui segment" style="width:90%;height:100%;overflow-y:auto;">
     <form class='ui form' style='margin-top:30px;text-align:center' name='searchForm' id='searchForm'>
         <div class='six fields'>
             <div class="field">
@@ -299,6 +300,8 @@ applied($res,$common,$user);
 if(isset($_SESSION['is_user']))
 {?>
 <div class='slide' data-anchor='slide2'>
+    <div class='ui segment' style='width:90%;height:100%;overflow-y:auto;'>
+    <div class='ui header'>我的最愛</div>
   <table class="ui striped table" style='margin-bottom:100px' id='recruit_table'>
       <thead>
           <th><i class=""></i>ID</th>
@@ -325,6 +328,7 @@ if(isset($_SESSION['is_user']))
         </tr>
       </tbody>
   </table>
+    </div>
 </div>
 <?php
 }
