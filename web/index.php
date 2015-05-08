@@ -108,6 +108,7 @@ $(document).ready(function() {
     </form>
     <table class="ui striped table" style='margin-bottom:100px' id='recruit_table'>
         <thead>
+            <th><i class=""></i>ID</th>
             <th><i class="crosshairs icon"></i>Occupation</th>
             <th><i class="marker icon"></i>Location</th>
             <th><i class="wait icon"></i>Work Time</th>
@@ -222,22 +223,22 @@ $db = new Boss();
                 <label>Experience</label>
                   <select class="ui dropdown selection" name="experience" id='experience'>
                     <option value="">Experience</option>
-                    <option value="no">No experience required</option>
+                    <option value="0">No experience required</option>
                     <option value="1">1 year</option>
                     <option value="2">2 years</option>
-                    <option value="3">3 years</option>
-                    <option value="4">4 years</option>
+                    <option value="5">5 years</option>
+                    <option value="10">10 years</option>
                   </select>
               </div>
               <div class="field">
                 <label>Salary</label>
                   <select class="ui dropdown selection" name="salary" id='salary'>
                     <option value="">Salary</option>
-                    <option value="22000">22000</option>
-                    <option value="30000">30000</option>
-                    <option value="40000">40000</option>
-                    <option value="50000">50000</option>
-                    <option value="70000">70000</option>
+                    <option value="1000">1000</option>
+                    <option value="2000">2000</option>
+                    <option value="3000">3000</option>
+                    <option value="4000">4000</option>
+                    <option value="5000">5000</option>
                   </select>
               </div>
             </div>

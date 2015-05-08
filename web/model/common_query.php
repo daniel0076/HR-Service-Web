@@ -74,7 +74,7 @@ INNER JOIN `occupation` ON recruit.occupation_id=occupation.id
             $sql.=" AND (education IS NOT NULL OR education !=:education)";
         }
         if($experience!=null){
-            $sql.=" AND experience =:experience";
+            $sql.=" AND experience >=:experience";
         }
         else{
             $sql.=" AND (experience IS NOT NULL OR experience !=:experience)";
@@ -229,7 +229,7 @@ INNER JOIN `occupation` ON recruit.occupation_id=occupation.id
                 $run = self::$myPDO->prepare($sql);
                 $run->execute(array(':employer_id'=>$boss_id));
                 $res = $run->fetchAll(PDO::FETCH_ASSOC);
-                
+
             }catch (PDOException $e)
             {
                 echo 'List query failed ' . $e->getMessage();
@@ -241,7 +241,7 @@ INNER JOIN `occupation` ON recruit.occupation_id=occupation.id
             }
             return false;
         }
-        public function findAppliedUser($recruit_id) 
+        public function findAppliedUser($recruit_id)
         {
             try
             {

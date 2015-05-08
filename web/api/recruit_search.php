@@ -68,6 +68,7 @@ function make_recruit_table ($res,$applied=null,$favorite=null) {
             }
         }
         $row="<tr id='post".$r['id']."'>";
+        $row.="<td>".htmlspecialchars($r['id'])."</td>";
         $row.="<td>".htmlspecialchars($r['occupation'])."</td>";
         $row.="<td>".htmlspecialchars($r['location'])."</td>";
         $row.="<td>".htmlspecialchars($r['working_time'])."</td>";
