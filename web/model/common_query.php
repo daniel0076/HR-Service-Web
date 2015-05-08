@@ -81,12 +81,12 @@ INNER JOIN `occupation` ON recruit.occupation_id=occupation.id
         }
         $sql.=" AND salary >=:salary";
         if ($sort=="desc"){
-            $sort=" ORDER BY salary DESC";
+            $sort=" ORDER BY salary DESC,id ASC";
         }
         else if($sort=="asc"){
-            $sort=" ORDER BY salary ASC";
+            $sort=" ORDER BY salary ASC,id ASC";
         }else{
-            $sort="";
+            $sort=" ORDER BY id ASC";
         }
         $sql.=$sort;
 
