@@ -316,7 +316,7 @@ if(isset($_SESSION['is_user']))
       </thead>
       <tbody>
         <tr ng-repeat="row in list">
-            <td>{{row.fid}}</td>
+            <td>{{row.id}}</td>
             <td>{{row.occupation}}</td>
             <td>{{row.location}}</td>
             <td>{{row.working_time}}</td>
