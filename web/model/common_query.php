@@ -150,7 +150,7 @@ INNER JOIN `occupation` ON recruit.occupation_id=occupation.id
         {
             try
             {
-                $sql = "SELECT *,favorite.id AS fid FROM `favorite` INNER JOIN `recruit_table_view` ON favorite.recruit_id=recruit_table_view.id WHERE user_id=:user_id ORDER BY fid ASC";
+                $sql = "SELECT *,favorite.id AS fid FROM `favorite` INNER JOIN `recruit_table_view` ON favorite.recruit_id=recruit_table_view.id WHERE user_id=:user_id ORDER BY recruit_table_view.id ASC";
                 $run = self::$myPDO->prepare($sql);
                 $run->execute(array(':user_id'=>$user_id));
                 $res = $run->fetchALL(PDO::FETCH_ASSOC);
