@@ -1,3 +1,16 @@
+Human Resource Service System
+===
+
+Database Projcet , NCTU 2015 Spring
+
+---
+## Description
+
++ Backend : PHP without framework
++ Frontend: Jquery, Angularjs, Xajax
++ UI Framework: [Semantic UI](http://semantic-ui.com)
+
+---
 
 ## Specification
 
@@ -29,8 +42,10 @@
     + specialty
     + user
     + user_specialty
+    + favorite
+    + application
 
-### Session Varibles
+### PHP Session Varibles
   + is_authed
     + True for logined
     + False for visitors
@@ -41,27 +56,3 @@
     + boss_id
     + boss_name
 
-### Foreign Keys
-+ location
-    + Taipei
-    + New Taipei
-    + HsinChu
-    + Taoyuan
-    + Taichung
-    + Tainan
-    + Kaohsiung
-+ occupation
-    + Pusheen
-    + Tuzki
-    + Mugsy
-    + Bun
-    + Minion
-    + Pandadog
-    + Koko
-+ specialty
-    + sleep
-    + eat
-    + kiss
-    + blink
-    + break the cup
-    + bully the boss
