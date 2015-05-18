@@ -2,6 +2,7 @@ Human Resource Service System
 ===
 
 Database Team Projcet , NCTU 2015 Spring
+
 Teammate: ActKz (https://github.com/ActKz)
 
 ---
